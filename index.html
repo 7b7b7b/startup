@@ -267,6 +267,22 @@
     .depth-high { color: var(--red); font-weight: 900; }
     .depth-mid { color: var(--amber); font-weight: 900; }
     .depth-low { color: var(--muted); font-weight: 900; }
+    html, body, .page-shell {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    * {
+      -webkit-touch-callout: none;
+    }
+    ::selection {
+      background: transparent;
+      color: inherit;
+    }
+    @media print {
+      body { display: none !important; }
+    }
     @media (max-width: 980px) {
       .page-shell { display: block; }
       .sidebar { display: none; }
@@ -1462,5 +1478,29 @@
       </section>
     </main>
   </div>
+  <script>
+    (() => {
+      const stop = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      };
+
+      ['copy', 'cut', 'contextmenu', 'selectstart', 'dragstart'].forEach((type) => {
+        document.addEventListener(type, stop, { capture: true });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        const key = event.key.toLowerCase();
+        const command = event.ctrlKey || event.metaKey;
+        const blockedCommand = command && ['a', 'c', 'p', 's', 'u', 'x'].includes(key);
+        const blockedDevTools = event.key === 'F12' || (command && event.shiftKey && ['c', 'i', 'j'].includes(key));
+
+        if (blockedCommand || blockedDevTools) {
+          stop(event);
+        }
+      }, { capture: true });
+    })();
+  </script>
 </body>
 </html>
