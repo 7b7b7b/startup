@@ -1,0 +1,1466 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>创业课案例分析复习讲义</title>
+  <style>
+    :root {
+      --bg: #f6f7f4;
+      --paper: #ffffff;
+      --ink: #162022;
+      --muted: #647170;
+      --line: #d9e0dc;
+      --teal: #006a6a;
+      --teal-dark: #034b4d;
+      --blue: #2d5f9a;
+      --green: #4d7b42;
+      --amber: #b46b20;
+      --red: #b6473d;
+      --soft-teal: #e8f3f0;
+      --soft-blue: #eaf0f8;
+      --soft-amber: #fbf0df;
+      --soft-green: #eef5e9;
+      --shadow: 0 18px 45px rgba(25, 35, 35, 0.10);
+      --radius: 8px;
+      --sans: Inter, "SF Pro Text", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(0, 106, 106, 0.06) 0 1px, transparent 1px 100%) 0 0 / 44px 44px,
+        linear-gradient(0deg, rgba(45, 95, 154, 0.05) 0 1px, transparent 1px 100%) 0 0 / 44px 44px,
+        var(--bg);
+      font-family: var(--sans);
+      line-height: 1.78;
+      letter-spacing: 0;
+    }
+    a { color: var(--teal-dark); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .page-shell { display: grid; grid-template-columns: 286px minmax(0, 1fr); min-height: 100vh; }
+    .sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 24px 18px;
+      border-right: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      overflow: auto;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; color: var(--teal-dark); text-decoration: none; }
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 2px solid var(--teal);
+      border-radius: var(--radius);
+      font-weight: 900;
+      font-size: 18px;
+    }
+    .brand-title { display: block; font-size: 17px; font-weight: 850; line-height: 1.2; }
+    .brand-subtitle { display: block; color: var(--muted); font-size: 12px; }
+    .nav-label { margin: 22px 0 9px; color: var(--muted); font-size: 12px; font-weight: 800; text-transform: uppercase; }
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 40px;
+      padding: 8px 10px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1.35;
+    }
+    .nav-link:hover { border-color: rgba(0, 106, 106, 0.25); background: var(--soft-teal); color: var(--teal-dark); }
+    .nav-number {
+      display: inline-grid;
+      flex: 0 0 24px;
+      width: 24px;
+      height: 24px;
+      place-items: center;
+      border-radius: 50%;
+      background: #eef2ef;
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .sidebar-note {
+      margin-top: 22px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfa;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .content { min-width: 0; max-width: 100vw; overflow-x: hidden; padding: 30px clamp(18px, 4vw, 56px) 72px; }
+    .mobile-nav { display: none; margin-bottom: 18px; }
+    .mobile-nav select { width: 100%; min-height: 42px; border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 10px; background: #fff; color: var(--ink); }
+    .top-strip { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+    .crumb { color: var(--muted); font-size: 14px; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      align-items: center;
+      gap: 26px;
+      margin-bottom: 28px;
+      padding: clamp(24px, 4vw, 42px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .hero h1 { margin: 0 0 14px; font-size: clamp(32px, 4.4vw, 56px); line-height: 1.06; letter-spacing: 0; }
+    .hero p { max-width: 800px; margin: 0 0 18px; color: #40504f; font-size: 17px; }
+    .eyebrow { display: inline-flex; margin-bottom: 14px; color: var(--amber); font-size: 13px; font-weight: 900; }
+    .chapter-meta { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--soft-teal);
+      color: var(--teal-dark);
+      font-size: 12px;
+      font-weight: 850;
+      line-height: 1.35;
+    }
+    .tag.blue { background: var(--soft-blue); color: var(--blue); }
+    .tag.amber { background: var(--soft-amber); color: var(--amber); }
+    .tag.green { background: var(--soft-green); color: var(--green); }
+    .visual-card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fbfcfa; }
+    .visual-caption { padding: 10px 12px; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .diagram { display: block; width: 100%; height: auto; }
+    .section {
+      margin: 26px 0;
+      padding: clamp(22px, 3vw, 34px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+    }
+    .section h2 { margin: 0 0 14px; font-size: clamp(24px, 3vw, 34px); line-height: 1.22; }
+    .section h3 { margin: 22px 0 10px; font-size: 20px; line-height: 1.35; }
+    .lead { color: #40504f; font-size: 17px; }
+    .grid { display: grid; gap: 14px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfa;
+    }
+    .card h3 { margin-top: 0; }
+    .exam-note {
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 12px;
+      margin: 16px 0;
+      padding: 14px;
+      border: 1px solid rgba(180, 107, 32, 0.35);
+      border-radius: var(--radius);
+      background: var(--soft-amber);
+    }
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--amber);
+      color: #fff;
+      font-weight: 900;
+    }
+    .table-wrap { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: var(--radius); }
+    table { width: 100%; border-collapse: collapse; background: #fff; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { background: #eef2ef; color: var(--teal-dark); font-size: 14px; }
+    tr:last-child td { border-bottom: 0; }
+    .worked {
+      margin: 20px 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(25, 35, 35, 0.06);
+    }
+    .worked-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(90deg, var(--soft-teal), #fff);
+    }
+    .worked-head h3 { margin: 0; font-size: 19px; }
+    .worked-body { padding: 16px; }
+    .scene-brief {
+      margin: 0 0 12px;
+      padding: 12px;
+      border-left: 4px solid var(--teal);
+      background: var(--soft-teal);
+    }
+    .solution {
+      margin: 14px 0;
+      padding: 14px;
+      border: 1px solid rgba(45, 95, 154, 0.22);
+      border-radius: var(--radius);
+      background: var(--soft-blue);
+    }
+    .solution h4, .mistakes h4 { margin: 0 0 8px; font-size: 16px; }
+    .mistakes {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border: 1px solid rgba(182, 71, 61, 0.25);
+      border-radius: var(--radius);
+      background: #fff3f1;
+    }
+    .answer-list { margin: 8px 0 0; padding-left: 22px; }
+    .answer-list li { margin: 6px 0; }
+    .compact-list { margin: 8px 0; padding-left: 20px; }
+    .callout { padding: 14px; border: 1px solid var(--line); border-radius: var(--radius); background: #fbfcfa; }
+    .kbd { font-family: var(--sans); font-weight: 850; color: var(--teal-dark); }
+    details.case-pack {
+      margin: 14px 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfa;
+      overflow: hidden;
+    }
+    details.case-pack > summary {
+      cursor: pointer;
+      padding: 12px 14px;
+      background: #eef2ef;
+      color: var(--teal-dark);
+      font-weight: 900;
+    }
+    details.case-pack .table-wrap {
+      margin: 0;
+      border: 0;
+      border-top: 1px solid var(--line);
+      border-radius: 0;
+    }
+    .case-index {
+      width: 52px;
+      color: var(--muted);
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .priority-list {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      columns: 2;
+      column-gap: 28px;
+    }
+    .priority-list li {
+      break-inside: avoid;
+      margin: 4px 0;
+    }
+    .depth-high { color: var(--red); font-weight: 900; }
+    .depth-mid { color: var(--amber); font-weight: 900; }
+    .depth-low { color: var(--muted); font-weight: 900; }
+    @media (max-width: 980px) {
+      .page-shell { display: block; }
+      .sidebar { display: none; }
+      .content { padding-top: 18px; }
+      .mobile-nav { display: block; }
+      .hero, .grid.two, .grid.three { grid-template-columns: 1fr; }
+      .priority-list { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top">
+        <span class="brand-mark">CY</span>
+        <span>
+          <span class="brand-title">创业课复习讲义</span>
+          <span class="brand-subtitle">案例分析 · 考前版</span>
+        </span>
+      </a>
+      <nav aria-label="讲义目录">
+        <p class="nav-label">讲义目录</p>
+        <a class="nav-link" href="#top"><span class="nav-number">0</span>总览</a>
+        <a class="nav-link" href="#method"><span class="nav-number">1</span>案例分析答题法</a>
+        <a class="nav-link" href="#foundation"><span class="nav-number">2</span>基础知识速记</a>
+        <a class="nav-link" href="#inventory"><span class="nav-number">3</span>全量案例速查</a>
+        <a class="nav-link" href="#case-depth"><span class="nav-number">4</span>展开程度</a>
+        <a class="nav-link" href="#case-bank"><span class="nav-number">5</span>案例分析题库</a>
+        <a class="nav-link" href="#final-check"><span class="nav-number">6</span>考前注意点</a>
+      </nav>
+      <div class="sidebar-note">
+        <strong>使用方式</strong>
+        <div>考试只考案例分析时，先背框架，再看题目事实，最后写判断、依据、建议和风险。公司名字不是重点，能把案例套进框架才是重点。</div>
+      </div>
+    </aside>
+
+    <main class="content" id="top">
+      <div class="mobile-nav">
+        <select onchange="location.href=this.value" aria-label="页面导航">
+          <option value="#top">0. 总览</option>
+          <option value="#method">1. 案例分析答题法</option>
+          <option value="#foundation">2. 基础知识速记</option>
+          <option value="#inventory">3. 全量案例速查</option>
+          <option value="#case-depth">4. 展开程度</option>
+          <option value="#case-bank">5. 案例分析题库</option>
+          <option value="#final-check">6. 考前注意点</option>
+        </select>
+      </div>
+
+      <div class="top-strip">
+        <div class="crumb">当前位置：创业课案例分析复习讲义</div>
+      </div>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">Exam Review · Case Analysis</div>
+          <h1>创业课案例分析复习讲义</h1>
+          <p>按当前目录下 10 份创业课 PPT 的可提取文字整理。目标不是把课件重讲一遍，而是把考试案例分析需要用到的基础框架、常见案例和完整答题套路集中到一页里。</p>
+          <div class="chapter-meta">
+            <span class="tag">基础知识</span>
+            <span class="tag blue">案例分析题</span>
+            <span class="tag amber">详细答案</span>
+            <span class="tag green">易错点</span>
+          </div>
+        </div>
+        <div class="visual-card">
+          <svg class="diagram" viewBox="0 0 650 360" role="img" aria-label="创业案例分析流程图">
+            <rect width="650" height="360" fill="#fbfcfa"></rect>
+            <path d="M72 92h145v70H72z" fill="#e8f3f0" stroke="#006a6a" stroke-width="3"></path>
+            <path d="M252 92h145v70H252z" fill="#eaf0f8" stroke="#2d5f9a" stroke-width="3"></path>
+            <path d="M432 92h145v70H432z" fill="#fbf0df" stroke="#b46b20" stroke-width="3"></path>
+            <path d="M145 202h360v78H145z" fill="#eef5e9" stroke="#4d7b42" stroke-width="3"></path>
+            <path d="M217 127h35M397 127h35M325 162v40" stroke="#40504f" stroke-width="4"></path>
+            <text x="104" y="123" font-size="20" font-weight="850" fill="#034b4d">事实</text>
+            <text x="88" y="149" font-size="14" fill="#647170">案例给了什么</text>
+            <text x="282" y="123" font-size="20" font-weight="850" fill="#2d5f9a">框架</text>
+            <text x="267" y="149" font-size="14" fill="#647170">用哪个理论</text>
+            <text x="463" y="123" font-size="20" font-weight="850" fill="#b46b20">判断</text>
+            <text x="448" y="149" font-size="14" fill="#647170">结论和理由</text>
+            <text x="225" y="247" font-size="22" font-weight="850" fill="#4d7b42">建议 + 风险 + 注意点</text>
+          </svg>
+          <div class="visual-caption">案例题不是背故事，而是用课程概念解释故事中的成败、选择和改进方案。</div>
+        </div>
+      </section>
+
+      <section class="section" id="method">
+        <h2>1. 案例分析答题法</h2>
+        <p class="lead">拿到案例题先别急着写感想。先判断它属于哪一章：创业机会、商业模式、精益创业、团队股权、融资控制权、新企业生成、成长战略或企业传承。然后按固定结构写，答案会更像考试答案。</p>
+        <div class="exam-note">
+          <div class="mark">考</div>
+          <div><strong>万能结构：</strong>先下结论，再找事实，再套理论，再给建议，最后写风险和边界。不要只复述案例，也不要只堆概念。</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>题目问法</th><th>优先使用的框架</th><th>答案必须出现</th></tr></thead>
+            <tbody>
+              <tr><td>为什么成功或失败</td><td>商业模式、精益创业、机会窗口、团队能力</td><td>成败不是单一原因，要写“市场、产品、团队、资金、时机”的组合。</td></tr>
+              <tr><td>是不是创业活动</td><td>创业定义：机会识别、资源组合、创造价值、不确定性</td><td>不要把“开公司”简单等同于创业，也不要把“公益活动”直接排除。</td></tr>
+              <tr><td>商业模式好不好</td><td>为谁创造价值、如何传递价值、如何获取价值、能否复制、盈利模式</td><td>必须分析收入、成本、用户、竞争壁垒和规模化。</td></tr>
+              <tr><td>如何识别或评价机会</td><td>机会来源、趋势/问题/组合型机会、蒂蒙斯评价体系</td><td>要写市场空间、痛点、进入时机、竞争优势、团队匹配。</td></tr>
+              <tr><td>团队或股权怎么分</td><td>目标一致、契约精神、权力中心、互补分工、股权绑定和退出机制</td><td>不能只说平均分公平，要说贡献、控制权、激励和退出。</td></tr>
+              <tr><td>融资或投资人怎么选</td><td>债权融资、股权融资、对赌、控制权保护、投资人资源</td><td>要写钱以外的条款：表决权、回购、清算优先、董事席位。</td></tr>
+              <tr><td>新企业如何对抗巨头</td><td>新创企业弱性、合法性、精准定位、避开正面竞争</td><td>要写利基市场、差异化、速度、低成本试错。</td></tr>
+              <tr><td>企业如何成长或传承</td><td>内生成长、并购扩张、多元化、国际化、治理权和股权传承</td><td>要写成长边界、协同效应、治理制度和价值观。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="grid three">
+          <div class="card"><h3>开头句</h3><p>“本案例的核心不是某个单点错误，而是创业机会、商业模式、团队治理与融资安排之间是否匹配。”这类开头适合多数综合题。</p></div>
+          <div class="card"><h3>中段句</h3><p>“从价值创造看，它解决了什么痛点；从价值传递看，它如何触达客户；从价值获取看，它能否覆盖成本并形成持续收入。”适合商业模式题。</p></div>
+          <div class="card"><h3>结尾句</h3><p>“因此，建议先小范围验证，再根据数据迭代；同时通过契约、股权和治理机制降低后续冲突。”适合建议类题。</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="foundation">
+        <h2>2. 基础知识速记</h2>
+        <p class="lead">下面只保留案例分析题真正会用到的基础知识。每个概念都要能拿来解释一个具体案例。</p>
+
+        <div class="grid two">
+          <div class="card">
+            <h3>创业与创业精神</h3>
+            <p>创业是在创业精神驱动下，识别机会、组合资源、创造价值的高度不确定活动。判断一个活动是不是创业，关键看是否有新机会、新资源组合、新价值创造和风险承担。</p>
+            <p><strong>答题关键词：</strong>机会、资源、价值、不确定性、创新、成长。</p>
+          </div>
+          <div class="card">
+            <h3>创业者特质</h3>
+            <p>成功创业者通常具备自信、格局、差异化思维、坚毅、执着、好奇心、学习能力和强内驱力。但案例题不能写成“性格决定成败”，还要结合团队、资源和环境。</p>
+            <p><strong>答题关键词：</strong>愿景、承担风险、学习迭代、资源整合、逆境韧性。</p>
+          </div>
+          <div class="card">
+            <h3>商业模式</h3>
+            <p>商业模式描述企业如何为顾客创造价值、传递价值并获取价值。一个好商业模式至少回答：做什么、为谁做、怎么做、怎么赚钱、能否持续。</p>
+            <p><strong>常见类型：</strong>订阅、饵与钩、平台网络效应、线上线下融合、集合模式、免费增值、忠诚模式、产品服务融合、代工模式。</p>
+          </div>
+          <div class="card">
+            <h3>精益创业</h3>
+            <p>精益创业适合高度不确定环境。核心不是“小气”，而是以较低成本做最小可行产品，快速验证假设，根据用户反馈迭代，避免一开始就重资产全面铺开。</p>
+            <p><strong>答题关键词：</strong>MVP、客户导向、试错、快速迭代、天使用户、低成本失败。</p>
+          </div>
+          <div class="card">
+            <h3>创业机会</h3>
+            <p>创业机会来自市场痛点、潜在需求、技术变化、政策人口变化、工作经验、跨界组合和趋势窗口。机会不等于创意，机会必须能匹配市场、资源和团队。</p>
+            <p><strong>评价维度：</strong>行业市场、经济性、收获条件、竞争优势、管理团队、致命缺陷、创业者个人标准、理想与现实差距。</p>
+          </div>
+          <div class="card">
+            <h3>创业团队与股权</h3>
+            <p>高效团队要目标一致、有契约精神、有权力中心、人员互补、分工明确。股权分配不能平均主义，应考虑贡献、控制权、激励、分期兑现和退出机制。</p>
+            <p><strong>答题关键词：</strong>创始人控制权、股权池、期权激励、vesting、回购条款、竞业限制。</p>
+          </div>
+          <div class="card">
+            <h3>创业融资</h3>
+            <p>债权融资解决短期资金缺口，但要求偿债能力。股权融资带来资金和资源，也会稀释股权和控制权。对赌协议能降低投资人风险，但可能反过来压垮创业者。</p>
+            <p><strong>控制工具：</strong>双重股权、表决权安排、董事会席位、章程保护、毒丸计划、股份回购、投资人筛选。</p>
+          </div>
+          <div class="card">
+            <h3>新企业生成</h3>
+            <p>新企业有合法性弱、资源弱、品牌弱、管理弱等弱性。不要过早引起巨头注意，也不要在巨头主场硬碰硬。应找细分人群、细分场景和可防守定位。</p>
+            <p><strong>答题关键词：</strong>利基市场、定位、合法性、低端切入、差异化、避开正面竞争。</p>
+          </div>
+          <div class="card">
+            <h3>企业成长</h3>
+            <p>成长可以靠内生增长，也可以靠并购、特许经营、多元化、国际化。并购能快速获得市场、技术和人才，但会带来整合风险、文化冲突和估值风险。</p>
+            <p><strong>答题关键词：</strong>专业化、市场渗透、市场开发、多元化、国际化、协同效应。</p>
+          </div>
+          <div class="card">
+            <h3>企业传承</h3>
+            <p>传承不是简单交班，而是技术、管理、文化、治理权、股权和财富的连续安排。家族企业尤其要用制度替代亲情口头约定。</p>
+            <p><strong>答题关键词：</strong>家族委员会、家族宪法、核心价值观、管理权传承、治理权传承、股权传承。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="inventory">
+        <h2>3. 全量案例速查表</h2>
+        <p class="lead">这一节按课件可提取文字层重新逐页扫描整理。原则是：凡是课件中出现了公司、人名、产品、事件、争议、成功/失败样本，且可以用于案例分析的，都列入；纯概念页不列。图片页没有文字层的，按前后相邻文字页归入对应案例。</p>
+        <div class="exam-note">
+          <div class="mark">全</div>
+          <div><strong>复习方法：</strong>先看“可考角度”，再背“分析抓手”。考试遇到陌生表述时，把案例归入机会、模式、精益、团队、融资、生成、成长、传承八类之一即可。</div>
+        </div>
+
+        <details class="case-pack" open>
+          <summary>第一章 认识创业：创业定义、创业精神、成功与失败</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">1</td><td>逐际动力机器人</td><td>技术型创业与新产业机会</td><td>机器人代表技术驱动机会，答题时写“技术进步创造新场景”，但还要落到商业化、成本、应用场景和团队能力。</td></tr>
+              <tr><td class="case-index">2</td><td>米哈游</td><td>创业团队、产品长期主义</td><td>早期小团队围绕内容和产品持续打磨，说明创业初期资源有限时应聚焦核心能力，靠产品、用户和长期投入形成壁垒。</td></tr>
+              <tr><td class="case-index">3</td><td>图森未来</td><td>高技术创业的风险</td><td>融资、估值和技术领先不等于成功。自动驾驶场景要同时验证安全、法规、商业化和治理能力，否则资本预期会反噬企业。</td></tr>
+              <tr><td class="case-index">4</td><td>乐视、贾跃亭</td><td>生态化扩张与资金链</td><td>多线扩张如果脱离现金流和核心能力，会从“战略想象”变成“资源透支”。答题要写业务协同、融资节奏和偿债能力。</td></tr>
+              <tr><td class="case-index">5</td><td>姚振华被讨薪</td><td>企业信誉、资本扩张后果</td><td>可用于说明创业和企业扩张都要守住现金流、员工权益和信用底线。短期资本运作不能替代长期经营责任。</td></tr>
+              <tr><td class="case-index">6</td><td>巴黎圣母院屋顶设计方案</td><td>创新思维、多方案竞争</td><td>不同国家设计师提出不同方案，说明创新不是唯一答案，而是围绕同一问题提出多种价值主张，再用约束条件筛选。</td></tr>
+              <tr><td class="case-index">7</td><td>正泰集团、南存辉</td><td>地方创业精神与长期成长</td><td>从小企业到大集团，说明创业精神包括吃苦、创新、冒险、脚踏实地和持续组织能力。不要只写“胆子大”。</td></tr>
+              <tr><td class="case-index">8</td><td>温州创业精神</td><td>区域创业文化</td><td>吃苦、敢创新、敢冒险、善变通，体现创业文化对机会识别和资源整合的影响。答题可联系民营经济和市场敏感度。</td></tr>
+              <tr><td class="case-index">9</td><td>山东潍坊风筝、风筝无人机化</td><td>传统产业创新</td><td>传统产品可以通过技术、场景和表达方式创新获得新价值。关键是旧资源的新组合，而不是完全从零发明。</td></tr>
+              <tr><td class="case-index">10</td><td>中国特色产业小镇</td><td>产业集群与创业生态</td><td>小镇产品畅销全球，说明创业不只靠单个企业，也靠供应链、工艺、渠道、人才和地方产业生态共同支撑。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第二章 创业者特质：愿景、韧性、格局与互补能力</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">11</td><td>苹果 40 周年海盗旗</td><td>创业者反叛精神</td><td>“海盗旗”象征打破常规、挑战既有秩序。答题时要写创新精神和独立判断，同时补充商业纪律，不能把叛逆等同于任性。</td></tr>
+              <tr><td class="case-index">12</td><td>SpaceX 月球基地计划</td><td>远大愿景与阶段目标</td><td>愿景很大，但推进被拆成勘探、载人登陆、常态运输等阶段。可说明创业者既要有想象力，也要有可执行里程碑。</td></tr>
+              <tr><td class="case-index">13</td><td>任正非、华为</td><td>军人特质与企业家精神</td><td>作风硬朗、执行力、团队协作、担当等军人特质能转化为组织韧性。注意不要只写个人英雄主义，还要写制度和团队。</td></tr>
+              <tr><td class="case-index">14</td><td>王石、万科</td><td>创业者格局和治理边界</td><td>可用于分析企业家精神、职业经理人治理、资本进入后创始人地位变化。与融资章“被资本淘汰”也能联动。</td></tr>
+              <tr><td class="case-index">15</td><td>扎克伯格新年计划与名片</td><td>自律、学习和目标管理</td><td>创业者的长期自我更新会影响企业成长。答题时写“持续学习和自我约束”，不要写成励志故事。</td></tr>
+              <tr><td class="case-index">16</td><td>Facebook 创业者与雪莉·桑德伯格</td><td>创始人与职业经理人互补</td><td>技术/产品型创始人需要运营、商业化和组织管理能力互补。优秀二号位能把创新产品变成可持续公司。</td></tr>
+              <tr><td class="case-index">17</td><td>蔡崇信加入阿里巴巴</td><td>商业敏感度与团队互补</td><td>技术创新重要，但商业敏感度、资本规则和国际化能力同样关键。蔡崇信案例适合写“合伙人补短板”。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第三章 商业模式：价值创造、传递与获取</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">18</td><td>Ketchapp 与《忍者弹弹弹》</td><td>商业模式创新</td><td>低成本休闲游戏、社交晒分传播、产品矩阵和广告/内购变现。成功点是传播机制和快速复制，不只是游戏好玩。</td></tr>
+              <tr><td class="case-index">19</td><td>《Threes!》与 2048 开源复制</td><td>好产品不等于好模式</td><td>产品优秀但商业模式单薄，容易被免费开源版本替代。答题要写知识产权、分发渠道、定价和网络传播速度。</td></tr>
+              <tr><td class="case-index">20</td><td>高技术壁垒硬件产品、1 克主板</td><td>技术壁垒型商业模式</td><td>技术复杂度能形成进入壁垒，但仍要回答客户是谁、如何量产、如何定价、售后和供应链如何支撑。</td></tr>
+              <tr><td class="case-index">21</td><td>BuiltWith</td><td>订阅模式</td><td>把网站技术数据做成持续更新的信息服务，靠月费变现。关键是数据持续性、客户刚需和低边际成本。</td></tr>
+              <tr><td class="case-index">22</td><td>Adobe</td><td>订阅制转型</td><td>从一次性软件销售转向持续订阅，提高收入稳定性和用户生命周期价值。风险是用户反感、盗版替代和持续创新压力。</td></tr>
+              <tr><td class="case-index">23</td><td>吉列剃刀</td><td>饵与钩模式</td><td>低价或便利地卖“饵”，长期靠刀片等耗材盈利。分析时重点写锁定用户、耗材复购和转换成本。</td></tr>
+              <tr><td class="case-index">24</td><td>深圳烧烤屋</td><td>饵与钩模式变体</td><td>用低价或爆款产品吸引客流，再通过配套消费和复购获利。关键是引流品不能拖垮整体毛利。</td></tr>
+              <tr><td class="case-index">25</td><td>雅芳</td><td>金字塔/直销组织</td><td>依靠销售网络和人际传播扩张。分析时要区分合法直销、激励机制和库存/招募风险。</td></tr>
+              <tr><td class="case-index">26</td><td>玫琳凯</td><td>金字塔/直销组织</td><td>通过顾问网络和激励体系销售化妆品。可考组织扩张、品牌培训和渠道控制。</td></tr>
+              <tr><td class="case-index">27</td><td>荷兰鲜花拍卖市场</td><td>在线/荷兰拍卖模式</td><td>鲜花保质期短，适合快速降价成交。答题要写交易效率、价格发现、标准化检测和市场集中。</td></tr>
+              <tr><td class="case-index">28</td><td>Bainbridges Auctions、皮特·贝恩桥</td><td>拍卖机制选择</td><td>英式、荷兰、密封、双重拍卖适合不同资产。核心是用交易机制降低信息不对称、提高成交效率。</td></tr>
+              <tr><td class="case-index">29</td><td>Jamie Oliver 的社交媒体/餐饮展示</td><td>品牌传播与线下消费</td><td>名厨 IP、门店和社交媒体形成内容传播。可用于分析个人品牌如何为餐饮商业模式引流。</td></tr>
+              <tr><td class="case-index">30</td><td>CASETiFY 联名与实验室式门店</td><td>产品服务融合</td><td>手机壳从功能品变为个性表达和体验零售。联名带来流量，门店带来参与感和溢价。</td></tr>
+              <tr><td class="case-index">31</td><td>ASML 与上下游联盟</td><td>集合模式、产业链同盟</td><td>让下游投资、入股上游蔡司，形成技术、供给和客户绑定。壁垒来自生态系统，不只是单点技术。</td></tr>
+              <tr><td class="case-index">32</td><td>柔宇科技</td><td>集合模式反面案例</td><td>高学历和先进技术不自动等于商业成功。要看量产能力、市场需求、现金流、应用场景和产业链配合。</td></tr>
+              <tr><td class="case-index">33</td><td>Fred Wilson 与免费增值辩论</td><td>Freemium 模式利弊</td><td>免费能降低获客成本，但可能吸引低价值用户。关键指标是免费转付费率、服务成本和客户终身价值。</td></tr>
+              <tr><td class="case-index">34</td><td>Costco</td><td>忠诚模式</td><td>会员费、低毛利精选商品、员工高薪和服务形成信任。分析时写“会员关系”而非单纯便宜。</td></tr>
+              <tr><td class="case-index">35</td><td>美国运通黑卡</td><td>高端忠诚模式</td><td>用身份、稀缺和专属服务绑定高净值用户。核心是会员身份价值和服务网络。</td></tr>
+              <tr><td class="case-index">36</td><td>SodaStream</td><td>创新模式、产品重定义</td><td>把饮料消费从买瓶装饮料转为家庭自制设备和耗材，改变消费场景与环保叙事。</td></tr>
+              <tr><td class="case-index">37</td><td>SuperMonkey</td><td>健身房模式创新</td><td>区别于传统健身房重销售、重年卡，强调小型空间、课程预约和灵活消费。分析单位经济和复购。</td></tr>
+              <tr><td class="case-index">38</td><td>Airbnb</td><td>共享平台模式</td><td>匹配闲置房源和住宿需求，平台靠信任机制、评价和规模网络效应获利。风险是监管和安全。</td></tr>
+              <tr><td class="case-index">39</td><td>Ofo、共享单车坟墓</td><td>共享模式反面</td><td>伪共享或补贴扩张会导致资源浪费和现金流风险。要看押金、维护、周转率和监管。</td></tr>
+              <tr><td class="case-index">40</td><td>共享奥迪、共享宝马、深圳共享汽车</td><td>共享汽车模式</td><td>用户价值是低门槛用车，但单车成本、停车、保险、折旧、调度和融资依赖决定可持续性。</td></tr>
+              <tr><td class="case-index">41</td><td>WeWork 与 IWG</td><td>共享办公模式</td><td>社区叙事不能替代单店盈利。固定租赁成本、出租率、续约率和企业客户比例是关键。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第四章 精益创业：MVP、试错、转向和快速迭代</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">42</td><td>Better Place</td><td>重资产假设未经验证</td><td>换电网络一次性大铺开，用户需求、标准化和利用率未验证。精益答案写“小范围 MVP 先验证”。</td></tr>
+              <tr><td class="case-index">43</td><td>Webvan</td><td>火箭发射式创业失败</td><td>自动仓储和多城市扩张过快，订单密度和单位经济模型未成立。先进技术被亚马逊吸收，但公司模式失败。</td></tr>
+              <tr><td class="case-index">44</td><td>SnapTax</td><td>精益创业成功案例</td><td>围绕明确痛点做极简产品，先验证用户是否愿意用，再迭代功能。适合写 MVP 和客户开发。</td></tr>
+              <tr><td class="case-index">45</td><td>Unsplash</td><td>从副产品到新模式</td><td>免费高质量图片聚集供给和流量，说明产品可从小需求切入，再通过社区、品牌或增值服务扩展。</td></tr>
+              <tr><td class="case-index">46</td><td>Google Glass、DHL 分拣、Project Wingman</td><td>转向真实客户</td><td>消费市场定位不清，但企业分拣/装配场景痛点明确。精益创业强调根据反馈转向。</td></tr>
+              <tr><td class="case-index">47</td><td>Meta Orion AR 眼镜</td><td>前沿产品验证</td><td>硬件、手势、视频通话和游戏体验展示原型价值。要分析天使用户、试用反馈和量产成本。</td></tr>
+              <tr><td class="case-index">48</td><td>好莱坞影视精益方法</td><td>内容产品试错</td><td>影视项目也会用小范围测试、预告反馈、观众数据优化内容。说明精益不只用于互联网。</td></tr>
+              <tr><td class="case-index">49</td><td>快手可灵 AI 平台</td><td>MVP 快速验证</td><td>先聚焦 9 秒短视频生成和创作者试用，再扩展能力。技术产品要用用户反馈决定迭代方向。</td></tr>
+              <tr><td class="case-index">50</td><td>咕咚网、申波</td><td>精益创业成功</td><td>围绕运动用户需求逐步验证产品和社区价值。可写聚焦天使用户、数据反馈和快速迭代。</td></tr>
+              <tr><td class="case-index">51</td><td>马斯克、SpaceX 星舰</td><td>Think Big, Start Small, Scale Fast</td><td>宏大目标拆成原型测试，不怕爆炸，持续迭代材料、发动机和结构。核心是低成本快速学习。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第五章 创业团队：契约、权力中心、股权设计与退出</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">52</td><td>腾讯早期团队：张志东、曾李青、陈一丹、许晨晔</td><td>互补型创业团队</td><td>优秀团队不是同质人堆叠，而是技术、产品、市场、管理互补，并围绕共同目标承担风险。</td></tr>
+              <tr><td class="case-index">53</td><td>完美幻境、赵博</td><td>缺乏优秀团队</td><td>明星公司也可能因团队能力、管理和协作不足而失败。答题要写技术、商业化和组织能力缺一不可。</td></tr>
+              <tr><td class="case-index">54</td><td>缺乏优秀团队案例 2、尹卫东</td><td>团队短板风险</td><td>课件将其归入“缺乏优秀团队”，答题时可从能力互补、权力中心和团队稳定性分析。</td></tr>
+              <tr><td class="case-index">55</td><td>张艺谋与张伟平</td><td>忽略契约精神</td><td>合作关系如果只靠情义，作品方向、收益分配和决策权会冲突。契约应先于利益扩大。</td></tr>
+              <tr><td class="case-index">56</td><td>徐小平关于合伙人的话</td><td>共同利益与兄弟情义</td><td>“用共同利益追求兄弟情义”说明合伙要靠制度和利益绑定，不要用感情替代契约。</td></tr>
+              <tr><td class="case-index">57</td><td>万通六君子</td><td>目标一致与合伙关系</td><td>目标一致时能抱团发展，目标分裂时容易分崩离析。适合写愿景、利益和决策机制。</td></tr>
+              <tr><td class="case-index">58</td><td>蓝色光标、赵文权重返</td><td>权力中心与创始人角色</td><td>创始人离开或回归都反映企业治理和权力安排。答题可写关键人物、组织稳定和战略连续性。</td></tr>
+              <tr><td class="case-index">59</td><td>宝能增持万科</td><td>控制权争夺</td><td>股权分散时外部资本可能争夺控制权。创业者要提前设计表决权、董事会和章程保护。</td></tr>
+              <tr><td class="case-index">60</td><td>真功夫、潘宇海、蔡达标</td><td>股权和经营权冲突</td><td>技术贡献、扩张贡献、财产权和行政权没有理顺，会让家族/合伙矛盾升级为治理危机。</td></tr>
+              <tr><td class="case-index">61</td><td>海底捞、张勇</td><td>股权结构整合</td><td>把不合理股权逐步调整成稳定治理结构，说明控制权清晰和长期激励对企业成长重要。</td></tr>
+              <tr><td class="case-index">62</td><td>微软：比尔·盖茨、保罗·艾伦、鲍尔默</td><td>股权随贡献和融资变化</td><td>早期股权不是一成不变，要随关键人才、融资和贡献调整。注意控制权和激励平衡。</td></tr>
+              <tr><td class="case-index">63</td><td>李子柒与微念</td><td>IP、品牌和控制权</td><td>个人 IP 与运营公司之间要明确商标、店铺、收益和决策权，否则成功后容易双输。</td></tr>
+              <tr><td class="case-index">64</td><td>汽车之家、李想、秦致</td><td>创始人与职业经理人/资本关系</td><td>平台做大后股权和治理结构变化，可能导致创始人或经营者被替换。要分析控制权和资本方目标。</td></tr>
+              <tr><td class="case-index">65</td><td>新浪、四通利方、王志东、段永基</td><td>融资稀释与创始人出局</td><td>多轮融资后持股大幅下降，创始人若没有表决权和董事会保护，容易被资本或大股东替代。</td></tr>
+              <tr><td class="case-index">66</td><td>孙正义、杜纪川、孙大卫</td><td>投资人和创业者关系</td><td>课件放在股权案例段，答题重点是外部资本如何影响控制权、资源和团队稳定。</td></tr>
+              <tr><td class="case-index">67</td><td>雷士照明、吴长江、阎焱、王冬雷</td><td>创始人与投资人控制权冲突</td><td>融资后如治理边界不清，创始人、投资人和后续接盘方会争夺控制权。要写董事会和契约。</td></tr>
+              <tr><td class="case-index">68</td><td>土豆网王微、杨蕾</td><td>合伙人婚姻/离婚风险</td><td>婚姻关系和股权关系交织会影响融资上市。股权退出机制应覆盖离婚、死亡、犯罪、离职。</td></tr>
+              <tr><td class="case-index">69</td><td>Valve、Gabe Newell、Mike Harrington</td><td>合伙人退出机制</td><td>合伙人离开时要有回购、服务期限和权益安排，否则长期股权纠纷会影响企业发展。</td></tr>
+              <tr><td class="case-index">70</td><td>Facebook、扎克伯格、Eduardo Saverin、Dustin Moskovitz</td><td>创始人股权与退出</td><td>高速成长企业中，早期合伙人贡献和后续退出要有明确协议。否则稀释和控制权争议会爆发。</td></tr>
+              <tr><td class="case-index">71</td><td>寒武纪、梁军</td><td>技术公司股权和人才</td><td>AI 芯片等硬科技企业要用股权绑定核心技术人才，同时避免关键个人离开造成组织风险。</td></tr>
+              <tr><td class="case-index">72</td><td>DeepSeek、梁文锋与多层架构</td><td>控制、激励与融资接口</td><td>顶层控制、中层激励融资、底层业务主体，体现控制权、股权池和风险隔离的组合设计。</td></tr>
+              <tr><td class="case-index">73</td><td>董宇辉</td><td>个人 IP 与组织关系</td><td>个人影响力和平台/公司利益要通过股权、分成、品牌权属和岗位边界协调，否则容易形成冲突。</td></tr>
+              <tr><td class="case-index">74</td><td>携程创始团队：沈南鹏、梁建章、季琦、范敏</td><td>互补能力配置</td><td>金融投资、管理、创业激情、信息系统等能力互补，说明高效团队要覆盖资金、管理、技术和市场。</td></tr>
+              <tr><td class="case-index">75</td><td>小米创始团队：雷军、林斌、黎万强等</td><td>明星互补团队</td><td>互联网、软件、硬件、设计、营销等背景组合，说明复杂创业项目需要跨职能团队。</td></tr>
+              <tr><td class="case-index">76</td><td>当当网李国庆、俞渝</td><td>夫妻合伙创业</td><td>夫妻创业的优势是信任和投入，风险是家庭矛盾公司化。必须有股权、决策和退出制度。</td></tr>
+              <tr><td class="case-index">77</td><td>赶集网杨浩然、58 同城姚劲波及合并</td><td>竞争、合并与创始人选择</td><td>同类平台长期竞争后合并，说明外部成长也可能是解决竞争和资源消耗的方式。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第六章 创业机会：来源、窗口、创意方法和机会评价</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">78</td><td>OpenAI、Hugging Face、Anthropic、Midjourney、Character.AI、数据标注和邮件安全平台</td><td>AI 技术驱动机会群</td><td>AI 能重做很多行业，但机会评价仍要看应用场景、数据资源、商业化收入、算力成本和竞争壁垒。</td></tr>
+              <tr><td class="case-index">79</td><td>Traini、PetGPT</td><td>宠物经济与 AI 场景</td><td>把宠物行为、医疗辅助和短视频流量结合起来，说明痛点可以来自细分人群和情感消费。风险是准确率和责任边界。</td></tr>
+              <tr><td class="case-index">80</td><td>Gore-Tex</td><td>工作经验中的机会完善</td><td>技术材料解决防水透气痛点，说明机会来自对既有问题的技术改进，并能形成专利和品牌壁垒。</td></tr>
+              <tr><td class="case-index">81</td><td>拓竹科技</td><td>复制或完善工作中想法</td><td>来自行业经验的机会更接近真实需求。答题写技术积累、用户痛点、产品化和供应链能力。</td></tr>
+              <tr><td class="case-index">82</td><td>正浩创新</td><td>储能/户外能源机会</td><td>围绕便携储能、户外场景和新能源趋势形成机会。评价时看市场规模、成本、渠道和安全性。</td></tr>
+              <tr><td class="case-index">83</td><td>速腾聚创</td><td>智能驾驶传感器机会</td><td>激光雷达等技术受自动驾驶趋势驱动。机会窗口取决于车企采用、成本下降和规模量产。</td></tr>
+              <tr><td class="case-index">84</td><td>阳萌抓取 20 万条 3C 差评</td><td>从用户差评找痛点</td><td>差评是未满足需求的数据库。创业者可用数据系统化识别痛点，而不是只凭直觉。</td></tr>
+              <tr><td class="case-index">85</td><td>室友对话激发 APP 灵感、两年三个 APP</td><td>潜在需求与连续试错</td><td>偶然灵感要转化为机会，必须验证需求强度和商业化。连续做 APP 体现试错，但要避免盲目换方向。</td></tr>
+              <tr><td class="case-index">86</td><td>宇树科技人形机器人、Kai Cenat 直播</td><td>技术趋势与传播破圈</td><td>机器人机会来自技术成熟、成本下降和社交传播。直播流量能提高认知，但商业价值要看真实应用。</td></tr>
+              <tr><td class="case-index">87</td><td>GXO 旗下 Reflex Robotics</td><td>物流机器人应用场景</td><td>物流场景任务标准化、劳动力成本高，适合机器人落地。分析时写场景刚需和 ROI。</td></tr>
+              <tr><td class="case-index">88</td><td>本末科技直驱技术</td><td>核心部件创业机会</td><td>不一定做整机，核心零部件也能创业。直驱技术可改善效率、噪声和可靠性，形成 B 端机会。</td></tr>
+              <tr><td class="case-index">89</td><td>戴森被小米、追觅、莱芬围剿</td><td>竞争格局变化</td><td>高端品牌被国产技术和性价比冲击，说明机会来自行业格局变化和供应链能力成熟。</td></tr>
+              <tr><td class="case-index">90</td><td>追觅、俞浩、清华天空工场</td><td>技术团队与创业机会</td><td>高速数字马达和智能算法是技术护城河，创客空间和高校资源能转化为创业团队能力。</td></tr>
+              <tr><td class="case-index">91</td><td>奥斯本、BBDO 与头脑风暴</td><td>创意开发方法</td><td>头脑风暴强调不评价、追求数量、鼓励组合。它是产生创意的方法，不等于机会本身。</td></tr>
+              <tr><td class="case-index">92</td><td>可口可乐创意包装</td><td>传统产品创意再造</td><td>糖水也能通过包装、互动、联名和节日场景创造新消费理由，说明创意能提升情绪价值。</td></tr>
+              <tr><td class="case-index">93</td><td>米其林指南</td><td>跨界思维</td><td>轮胎公司通过餐饮指南促进出行需求，跨界把原本不相关的产品和场景连接起来。</td></tr>
+              <tr><td class="case-index">94</td><td>Intel 广告</td><td>技术品牌跨界传播</td><td>把抽象芯片技术转化为消费者能感知的品牌符号，说明 B 端技术也需要用户心智。</td></tr>
+              <tr><td class="case-index">95</td><td>复仇者联盟 + 吉利剃须刀</td><td>IP 联名跨界</td><td>借助热门 IP 重新激活成熟产品。关键是 IP 人群和产品消费场景是否匹配。</td></tr>
+              <tr><td class="case-index">96</td><td>魔方 + 蛋糕、Cédric Grolet 甜点</td><td>产品形态跨界</td><td>把游戏、视觉艺术和甜点结合，增加体验感和传播性。适合写情绪价值和差异化。</td></tr>
+              <tr><td class="case-index">97</td><td>沃尔沃神奇喷雾</td><td>产品经营跨界</td><td>围绕安全品牌延伸到骑行可见性喷雾，把品牌价值和用户安全痛点结合。</td></tr>
+              <tr><td class="case-index">98</td><td>日清广告、高达、最终幻想</td><td>热点跨界营销</td><td>通过雕像泡面、高达和游戏热点制造传播。注意短期流量要与品牌记忆连接。</td></tr>
+              <tr><td class="case-index">99</td><td>腾讯游戏与敦煌文化</td><td>文化跨界</td><td>游戏和传统文化结合，既能增加内容深度，也能打开新传播场景。关键是尊重文化和用户体验。</td></tr>
+              <tr><td class="case-index">100</td><td>艾睿电子、Sam Schmidt 半自动赛车和外骨骼</td><td>设计思维</td><td>从残障人士真实需求出发，同理心、定义问题、原型、测试，最终把技术经验扩展给更多人。</td></tr>
+              <tr><td class="case-index">101</td><td>锤子手机、罗永浩</td><td>太晚进入机会窗口</td><td>智能手机竞争格局成熟后再进入，品牌、渠道、供应链和生态壁垒太高。情怀不能替代窗口期。</td></tr>
+              <tr><td class="case-index">102</td><td>汽车之家、理想汽车、李想</td><td>时机把握正好</td><td>汽车信息化和新能源家庭用车趋势打开窗口。成功来自趋势判断、用户定位和产品能力匹配。</td></tr>
+              <tr><td class="case-index">103</td><td>花西子、中国风</td><td>趋势型机会</td><td>国潮、中国风和新消费渠道共同形成机会。答题写文化符号、内容营销和品牌差异化。</td></tr>
+              <tr><td class="case-index">104</td><td>Gatorade 饮料</td><td>问题型机会</td><td>从运动补水和电解质需求出发解决具体问题。问题型机会要写痛点强度和可付费性。</td></tr>
+              <tr><td class="case-index">105</td><td>昂跑运动鞋</td><td>问题型机会、材料结构创新</td><td>通过结构和材料抵消冲击、适应多地面，解决跑步舒适和支撑痛点。LightSpray 体现技术迭代。</td></tr>
+              <tr><td class="case-index">106</td><td>华中科技大学八位博士的新产品</td><td>组合型机会</td><td>把多项技术、产品或服务组合出新用途。答题强调跨学科团队和场景落地。</td></tr>
+              <tr><td class="case-index">107</td><td>LVMH、伯纳德·阿诺特</td><td>机会评价与品牌资产</td><td>奢侈品集团说明品牌、渠道、并购和长期资产管理能形成机会优势。可用于蒂蒙斯行业市场和竞争优势维度。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第七章 创业融资：融资方式、投资条款、控制权和上市选择</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">108</td><td>史玉柱、巨人投资股权被冻结</td><td>担保和债权风险</td><td>债权融资和担保会带来偿债压力，企业家个人信用和资产可能被连带影响。不要只关注能否借到钱。</td></tr>
+              <tr><td class="case-index">109</td><td>空空狐、余小丹、周亚辉</td><td>股权融资与治理冲突</td><td>创业者和投资人对资金使用、经营能力、控制权和信息透明的认知冲突，根源是契约和治理安排不足。</td></tr>
+              <tr><td class="case-index">110</td><td>育碧、Vivendi、Yves Guillemot</td><td>恶意收购和反收购</td><td>资本方可通过增持争夺控制权，创始团队要用章程、股权结构和盟友抵御恶意收购。</td></tr>
+              <tr><td class="case-index">111</td><td>万科、王石</td><td>被资本淘汰的企业家</td><td>公司做大后创始人如果控制权不足，会被资本和董事会规则约束。适合写治理现代化和创始人边界。</td></tr>
+              <tr><td class="case-index">112</td><td>汽车之家、秦致</td><td>职业经理人与资本方</td><td>管理层被替换说明经营权不等于所有权。融资后要理解董事会、股东和管理层之间的权力关系。</td></tr>
+              <tr><td class="case-index">113</td><td>1 号店、于刚、刘峻岭</td><td>创始人出局</td><td>引入大资本和战略股东后，创始人可能失去控制。答题要写融资资源与控制权稀释的权衡。</td></tr>
+              <tr><td class="case-index">114</td><td>去哪儿网、庄辰超</td><td>资本退出和创始人命运</td><td>平台竞争和并购整合中，创始人的地位取决于股权、董事会和战略价值。</td></tr>
+              <tr><td class="case-index">115</td><td>俏江南、张兰</td><td>投资条款和对赌风险</td><td>股权回购、领售权、清算优先权等条款可能在经营不顺时让创始人失去主动权。融资前要读懂条款。</td></tr>
+              <tr><td class="case-index">116</td><td>蒙牛、牛根生</td><td>对赌成功</td><td>对赌在增长能力强、目标合理时能加速企业发展。核心是目标和真实经营能力匹配。</td></tr>
+              <tr><td class="case-index">117</td><td>肖战对赌、艺人对赌</td><td>对赌泛化风险</td><td>对赌不只在企业，也可能出现在文娱项目。风险是业绩承诺把不确定收益变成刚性压力。</td></tr>
+              <tr><td class="case-index">118</td><td>新浪、王志东</td><td>融资后创始人出局</td><td>多轮融资后股权和董事会控制改变，创始人若缺少制度保护，可能被资本淘汰。</td></tr>
+              <tr><td class="case-index">119</td><td>大众点评、张涛</td><td>并购整合中的创始人</td><td>合并能解决竞争，但创始人可能让出主导权。分析时写市场格局、资本压力和个人退出。</td></tr>
+              <tr><td class="case-index">120</td><td>华为任正非、立白、方太不上市</td><td>上市选择</td><td>不上市可以保持独立性、长期战略和稳定治理，但也牺牲公开融资和流动性。不能把上市当唯一目标。</td></tr>
+              <tr><td class="case-index">121</td><td>毒丸计划、Martin Lipton</td><td>反收购工具</td><td>通过股权摊薄威慑恶意收购。答案要写保护控制权和可能损害普通股东利益两面。</td></tr>
+              <tr><td class="case-index">122</td><td>双重股权结构</td><td>表决权设计</td><td>融资后持股被稀释，但表决权可以保持控制。缺点是中小股东监督弱化。</td></tr>
+              <tr><td class="case-index">123</td><td>京东、刘强东</td><td>融资成功与控制权</td><td>通过差异化投票权保持控制权。创业者要把股权比例和表决权区分开。</td></tr>
+              <tr><td class="case-index">124</td><td>找钢网、王东</td><td>天使投资判断</td><td>“不能投/可以投/一定要投”等判断说明投资人看团队、市场、模式和执行力，不只是看点子。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第八章 新企业生成：新创企业弱性、定位、营销和管理</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">125</td><td>今夜酒店特价、任鑫</td><td>新创企业应对巨头</td><td>不要过早引起巨头注意，应找细分入口和高性价比突破口。小公司先求存活和验证。</td></tr>
+              <tr><td class="case-index">126</td><td>OROLAY 亚马逊外套 vs 加拿大鹅/Moncler</td><td>差异化定位</td><td>避开高端奢侈主战场，用平台、性价比和大众场景切入。新企业靠精准定位对抗巨头。</td></tr>
+              <tr><td class="case-index">127</td><td>波士顿动力机器人 vs 特斯拉人形机器人</td><td>技术展示与商业化</td><td>高难度动作不等于商业可行，液压 Atlas 成本高；电驱转向说明技术路线要服务量产和应用。</td></tr>
+              <tr><td class="case-index">128</td><td>影石 Insta360</td><td>差异化产品突围</td><td>全景 HDR、AI 剪辑、隐形自拍杆等功能形成独特价值，说明小公司要有“精气神”和细分场景优势。</td></tr>
+              <tr><td class="case-index">129</td><td>资产负债表、利润表、现金流量表</td><td>创业管理基础</td><td>底子、面子、日子分别对应资产结构、盈利表现和现金流。案例题评价企业不能只看利润。</td></tr>
+              <tr><td class="case-index">130</td><td>奇瑞、瑞麒、凯翼、观致</td><td>多元化和多品牌失败/调整</td><td>品牌延伸要匹配产品力、资源、渠道和消费者认知。盲目追求规模会分散资源。</td></tr>
+              <tr><td class="case-index">131</td><td>五菱宏光</td><td>营销定位典范</td><td>“人民的代步车”低价、大众、实用定位清晰。消费者想要什么就造什么，体现精准目标群体。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第九章 企业成长：内生增长、并购、多元化和特许经营</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">132</td><td>复星集团、郭广昌、梁信军</td><td>企业生命周期和成长阶段</td><td>从三无创业者到内生增长、并购扩张、整体上市，再到痛苦瘦身，说明成长阶段不同，瓶颈和战略不同。</td></tr>
+              <tr><td class="case-index">133</td><td>小米印度排队购买</td><td>国际化和市场开发</td><td>新市场成功来自性价比、渠道、本地需求和品牌传播。国际化不能简单复制国内打法。</td></tr>
+              <tr><td class="case-index">134</td><td>李锦记与荣甡蚝油庄对比</td><td>多元化、现代化和传承</td><td>李锦记通过自动化、多元化、国际化成长，荣甡坚守小店最后落幕。说明坚守传统不等于拒绝现代化。</td></tr>
+              <tr><td class="case-index">135</td><td>滴滴快的、58 赶集、美团点评、携程去哪儿等合并</td><td>并购消灭竞争</td><td>合并能提高市场份额和利润率，但也有整合、垄断和文化冲突风险。</td></tr>
+              <tr><td class="case-index">136</td><td>腾讯游戏全球投资并购</td><td>外部成长战略</td><td>通过收购和投资获得内容、人才、技术和全球市场。关键是协同和保持被投团队创造力。</td></tr>
+              <tr><td class="case-index">137</td><td>安踏、丁世忠</td><td>并购扩张</td><td>并购狂人案例适合分析体育品牌通过收购品牌组合扩大市场，但要注意整合和品牌定位。</td></tr>
+              <tr><td class="case-index">138</td><td>李书福</td><td>并购大王</td><td>通过并购快速获得品牌、技术和全球资源。答题要写外部成长的速度优势与整合风险。</td></tr>
+              <tr><td class="case-index">139</td><td>跟着星巴克开店、两平米咖啡店</td><td>特许经营/选址借势</td><td>利用星巴克验证过的客群和位置，服务重度咖啡爱好者。可写市场跟随、定位细分和低成本运营。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+
+        <details class="case-pack">
+          <summary>第十章 企业传承：家族治理、财富传承和职业经理人</summary>
+          <div class="table-wrap"><table>
+            <thead><tr><th class="case-index">序号</th><th>课件案例</th><th>可考角度</th><th>分析抓手</th></tr></thead>
+            <tbody>
+              <tr><td class="case-index">140</td><td>龟甲万国内外业务</td><td>管理和文化传承</td><td>传统企业跨地区发展要传承技术、管理体系和企业文化，同时适应不同市场。</td></tr>
+              <tr><td class="case-index">141</td><td>李锦记家族、李文达</td><td>家族企业传承</td><td>核心价值观、家族委员会、家族宪法是制度化传承工具，能降低家族内部冲突。</td></tr>
+              <tr><td class="case-index">142</td><td>洛克菲勒家族</td><td>财富、治理和价值观传承</td><td>财富传承不仅是分钱，还包括教育、公益、声誉和家族治理结构。</td></tr>
+              <tr><td class="case-index">143</td><td>家族信托、基金会、家族办公室、保险</td><td>财富传承工具</td><td>这些工具用于传承规划、债务隔离、保密、税务筹划和公益。答题要写工具匹配目标。</td></tr>
+              <tr><td class="case-index">144</td><td>Jim Collins、第四级/第五级经理人</td><td>职业经理人与组织传承</td><td>第五级经理人兼具谦逊和坚忍，能让企业超越个人英雄主义。适合分析“强势董事会 + 职业经理人团队”。</td></tr>
+            </tbody>
+          </table></div>
+        </details>
+      </section>
+
+      <section class="section" id="case-depth">
+        <h2>4. 课件案例展开程度</h2>
+        <p class="lead">这里按课件呈现强度分档，不按本讲义写得多不多分。判断依据是：是否有“案例/思考题/辩论”标题，是否连续多页讲过程，是否有成败冲突、数据、问题或结论。复习优先级：重点展开 &gt; 中度展开 &gt; 随口带过。</p>
+        <div class="grid three">
+          <div class="card">
+            <h3><span class="depth-high">重点展开</span></h3>
+            <p>课件明显当案例讲，通常连续多页，有过程、冲突、成败原因或思考题。考试最可能围绕这类案例出分析题。</p>
+          </div>
+          <div class="card">
+            <h3><span class="depth-mid">中度展开</span></h3>
+            <p>课件有若干页或一组材料，但主要用来说明某个概念。考试可能换壳考理论，不一定直接考该案例本身。</p>
+          </div>
+          <div class="card">
+            <h3><span class="depth-low">随口带过</span></h3>
+            <p>多为一页名字、名单、图片、引语或概念旁证。知道它对应哪个知识点即可，不建议背细节。</p>
+          </div>
+        </div>
+
+        <details class="case-pack" open>
+          <summary><span class="depth-high">重点展开：必须按案例分析题准备</span></summary>
+          <div class="callout">
+            <ul class="priority-list">
+              <li>格子互动与创业讲坛</li><li>米哈游</li><li>图森未来</li><li>Ketchapp</li><li>《Threes!》与 2048</li><li>高技术壁垒硬件产品</li><li>BuiltWith</li><li>吉列剃刀</li><li>荷兰鲜花拍卖市场</li><li>CASETiFY</li><li>ASML</li><li>柔宇科技</li><li>免费增值模式辩论</li><li>Costco</li><li>共享汽车思考题</li><li>WeWork 与 IWG</li><li>Better Place</li><li>Webvan</li><li>SnapTax</li><li>Google Glass</li><li>Meta Orion</li><li>咕咚网</li><li>SpaceX 星舰迭代</li><li>完美幻境</li><li>张艺谋与张伟平</li><li>真功夫</li><li>海底捞</li><li>李子柒与微念</li><li>新浪/四通利方/王志东</li><li>雷士照明/吴长江</li><li>DeepSeek 股权架构</li><li>Gore-Tex</li><li>宇树科技</li><li>追觅</li><li>可口可乐创意包装</li><li>魔方蛋糕/Cedric Grolet</li><li>艾睿电子/Sam Schmidt</li><li>锤子手机</li><li>花西子</li><li>Gatorade</li><li>昂跑运动鞋</li><li>空空狐余小丹与周亚辉</li><li>育碧与 Vivendi</li><li>俏江南张兰</li><li>京东刘强东控制权</li><li>OROLAY</li><li>波士顿动力 vs 特斯拉机器人</li><li>影石 Insta360</li><li>奇瑞多品牌</li><li>五菱宏光</li><li>复星成长阶段</li><li>李锦记与荣甡蚝油庄</li><li>腾讯游戏并购</li><li>李锦记家族传承</li><li>洛克菲勒家族</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="case-pack">
+          <summary><span class="depth-mid">中度展开：理解分析角度即可</span></summary>
+          <div class="callout">
+            <ul class="priority-list">
+              <li>乐视/贾跃亭</li><li>巴黎圣母院屋顶设计方案</li><li>正泰集团/南存辉</li><li>山东潍坊风筝</li><li>SpaceX 月球基地计划</li><li>Adobe</li><li>深圳烧烤屋</li><li>雅芳</li><li>玫琳凯</li><li>Bainbridges Auctions</li><li>美国运通黑卡</li><li>SodaStream</li><li>SuperMonkey</li><li>Ofo 与共享单车坟墓</li><li>Unsplash</li><li>快手可灵</li><li>腾讯早期团队</li><li>缺乏优秀团队案例 2/尹卫东</li><li>万通六君子</li><li>宝能增持万科</li><li>微软早期股权</li><li>汽车之家/李想/秦致</li><li>孙正义相关股权案例</li><li>土豆网王微</li><li>Valve/Gabe Newell</li><li>Facebook/Saverin</li><li>寒武纪</li><li>董宇辉</li><li>携程创始团队</li><li>小米创始团队</li><li>当当网夫妻创业</li><li>赶集网与 58 同城</li><li>AI 公司群</li><li>Traini/PetGPT</li><li>拓竹科技</li><li>正浩创新</li><li>速腾聚创</li><li>阳萌抓差评</li><li>室友对话与 APP 灵感</li><li>戴森被国产品牌围剿</li><li>米其林指南</li><li>沃尔沃神奇喷雾</li><li>日清广告</li><li>腾讯游戏与敦煌文化</li><li>汽车之家/理想汽车</li><li>史玉柱股权被冻结</li><li>蒙牛牛根生对赌</li><li>毒丸计划</li><li>双重股权结构</li><li>找钢网王东</li><li>今夜酒店特价</li><li>小米印度</li><li>并购合并名单</li><li>安踏丁世忠</li><li>李书福</li><li>跟着星巴克开店</li><li>Jim Collins 第五级经理人</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="case-pack">
+          <summary><span class="depth-low">随口带过：知道对应知识点即可</span></summary>
+          <div class="callout">
+            <ul class="priority-list">
+              <li>逐际动力机器人</li><li>姚振华讨薪事件</li><li>温州创业精神</li><li>特色产业小镇</li><li>苹果海盗旗</li><li>任正非/华为</li><li>王石个人特质</li><li>扎克伯格新年计划</li><li>Facebook/Sandberg 作为互补例子</li><li>蔡崇信加入阿里</li><li>Jamie Oliver 社交媒体</li><li>Airbnb 创始人</li><li>好莱坞影视精益方法</li><li>徐小平合伙人语录</li><li>蓝色光标赵文权</li><li>Reflex Robotics</li><li>本末科技</li><li>奥斯本/BBDO</li><li>Intel 广告</li><li>复仇者联盟 + 吉利剃刀</li><li>华中科技大学八位博士新产品</li><li>LVMH/伯纳德·阿诺特</li><li>万科王石作为被资本淘汰名单</li><li>汽车之家秦致作为被资本淘汰名单</li><li>1 号店于刚、刘峻岭</li><li>去哪儿庄辰超</li><li>肖战/艺人对赌</li><li>大众点评张涛</li><li>华为、立白、方太不上市</li><li>资产负债表/利润表/现金流量表</li><li>龟甲万</li><li>家族信托等财富工具</li>
+            </ul>
+          </div>
+        </details>
+      </section>
+
+      <section class="section" id="case-bank">
+        <h2>5. 案例分析题库</h2>
+        <p class="lead">上一节是全量速查，下面是按考试可考形式展开的长答题。每题都给出完整答案和注意点。复习时先遮住答案，自己按“结论，事实，理论，建议，风险”写一遍。</p>
+
+        <article class="worked" id="q01">
+          <div class="worked-head"><h3>题 1：哪一则属于创业活动</h3><span class="tag">创业定义</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件给出两个看起来都和“创业”有关、但性质不同的活动。案例一是就读卡内基梅隆大学的学生创立“格子互动”信息技术有限公司，面向外部客户提供信息技术产品和服务，需要组织人员、开发产品、寻找客户并承担经营风险。案例二是西安交通大学四名学生创办创业讲坛，主要通过邀请企业家或创业者到校分享经验，服务对象首先是校内学生，价值更偏知识传播、社群组织和创业教育。<strong>作答要求：</strong>请不要只用“有没有注册公司”“有没有赚钱”判断，而要结合创业定义中的机会识别、资源组合、价值创造、不确定性和持续性，判断两者是否属于创业活动，并说明理由。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>判断不能只看是否注册公司，也不能只看是否盈利。创业的核心是识别机会、组合资源、创造新价值并承担不确定性。</li>
+                <li>案例一更典型地属于创业活动。它面向真实客户提供产品或服务，存在市场需求、资源投入、价值创造和商业风险。</li>
+                <li>案例二也可能具有创业属性，但要看它是否形成持续组织和价值创造。如果只是一次校园活动，它更像公益或社团活动；如果它能持续整合嘉宾、场地、用户和商业合作，形成品牌、课程或服务收入，也可以被视为广义创业。</li>
+                <li>因此，创业不是“开公司”等于创业，也不是“公益活动不算创业”。关键看是否把资源创造性组合起来解决问题并创造可持续价值。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>这题最忌二分法。标准答案要体现“创业活动有程度差异”，并用机会、资源、价值、不确定性四个词判断。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q02">
+          <div class="worked-head"><h3>题 2：米哈游和图森未来给创业者什么启示</h3><span class="tag blue">创业精神</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把米哈游和图森未来放在“认识创业”的部分。米哈游创业初期只是一个小团队，围绕游戏内容和产品体验长期投入，后来凭借强产品和用户社区形成巨大商业价值。图森未来则是无人驾驶货车领域的高技术创业公司，创始人具有很强技术背景，公司在成立早期获得资本认可，上市前完成多轮融资，上市后股价一度上涨；但自动驾驶技术和商业化并未完全成熟，课件提到其车辆事故、卡车工会反对、股价暴跌、裁员、创始人被踢出局等问题。<strong>作答要求：</strong>请比较两者，分析创业为什么既意味着机会、财富和声誉，也意味着技术不确定性、组织治理和资本压力。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>米哈游体现了创业初期的团队凝聚、产品专注和长期主义。早期资源有限时，创业者要围绕清晰产品方向持续打磨，而不是盲目扩张。</li>
+                <li>图森未来体现了高技术创业的双刃剑。技术领先能带来融资、估值和市场想象力，但如果技术成熟度、商业化场景、安全边界和治理能力跟不上，风险会集中爆发。</li>
+                <li>创业精神不是只敢冒险，还包括理性试错、承认不确定性、建立风控机制。自动驾驶这类行业尤其要重视安全验证、法规合规和公众信任。</li>
+                <li>对创业者的启示是：技术优势必须转化为可交付产品、可靠商业模式和稳定组织治理。资本认可不是创业成功的终点，上市和高估值也不能替代真实能力。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把图森未来简单写成“技术失败”。更准确的说法是技术成熟度、商业化节奏、组织治理和资本预期之间出现错配。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q03">
+          <div class="worked-head"><h3>题 3：Ketchapp 为什么能靠简单小游戏成功</h3><span class="tag">商业模式</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>Ketchapp 由 Michel Morcos 和 Antoine Morcos 兄弟创立，课件将其作为“因商业模式创新而成功”的例子。它推出的休闲小游戏规则简单、上手快、适合碎片时间，课件提到《忍者弹弹弹》曾在短时间内进入多个国家 iOS 免费榜前列。Ketchapp 还会转发玩家在社交网络上晒出的高分截图，让玩家的炫耀心理变成传播机制，降低获客成本。<strong>作答要求：</strong>请从价值创造、价值传递、价值获取三个角度分析：Ketchapp 提供了什么价值，如何传播给用户，又如何通过流量、广告、内购或产品矩阵获得收入。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>从价值创造看，Ketchapp 提供的是低门槛、碎片化、可反复挑战的娱乐产品，满足用户短时间消遣和竞争炫耀的需求。</li>
+                <li>从价值传递看，它利用应用商店分发和社交网络传播，让用户高分截图成为免费推广内容，降低获客成本。</li>
+                <li>从价值获取看，休闲游戏可以通过广告、内购或流量变现。单个游戏生命周期可能不长，但大量快速推出产品可以形成组合收益。</li>
+                <li>从竞争优势看，它的优势不是单个游戏技术壁垒，而是产品节奏、用户心理把握、低成本开发和传播机制。</li>
+                <li>局限是模仿门槛较低，爆款不稳定。因此要持续迭代、扩充产品矩阵，并用数据分析筛选高留存玩法。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不能只说“游戏好玩”。商业模式题一定要回答创造价值、传递价值、获取价值三件事。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q04">
+          <div class="worked-head"><h3>题 4：ASML 的商业模式为什么难复制</h3><span class="tag amber">高技术壁垒</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把 ASML 放在“集合模式”和产业链联盟中讲。ASML 的光刻机是芯片制造关键设备，产品复杂、研发周期长、上下游依赖强。课件提到 ASML 让下游芯片公司参与投资，投资者可以获得优先供货；同时 ASML 入股上游关键光学供应商蔡司，绑定曲面镜等核心部件供给。公开资料也显示，ASML 曾在 2012 年启动客户共同投资计划，Intel 等客户参与资金和研发支持。<strong>作答要求：</strong>请分析 ASML 为什么不是普通“卖设备”模式，而是通过客户、供应商、研发资金和供货优先权构成产业链同盟。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>ASML 的商业模式不是单纯卖设备，而是高技术产品、产业链协同和客户绑定的组合。</li>
+                <li>从上游看，光刻机高度依赖核心零部件和精密制造，ASML 通过入股或深度合作绑定关键供应商，保证技术迭代和供应稳定。</li>
+                <li>从下游看，让芯片企业参与投资并优先供货，本质上把客户需求、资金和长期合作绑定起来，降低研发不确定性。</li>
+                <li>从壁垒看，它同时具有技术壁垒、供应链壁垒、客户关系壁垒和时间积累壁垒。后来者即使有资金，也很难同时复制生态系统。</li>
+                <li>启示是，高技术创业不能只强调单点技术，还要设计产业链位置和利益共同体，让上下游愿意共同承担风险。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把 ASML 写成“技术强所以成功”就结束。高分答案要写出上下游联盟和生态位。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q05">
+          <div class="worked-head"><h3>题 5：CASETiFY 的联名与线下店有什么商业价值</h3><span class="tag">产品服务融合</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件展示 CASETiFY 的联名款产品、香港店铺和弹韧防摔旅行箱。它的产品表面上是手机壳、配件和箱包，但核心卖点并不只是保护功能，而是联名 IP、个性表达、材料颜色自由选择和线下店铺体验。课件特别提到其店铺像实验室一样，让消费者可以自由挑选材料、颜色和联名款式，被评价为重新创造零售体验。<strong>作答要求：</strong>请分析 CASETiFY 如何把普通配件做成高溢价品牌，并说明联名、线下体验、用户参与感和产品服务融合在商业模式中的作用。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>它出售的不只是手机壳，而是个性表达、社交身份和消费体验。联名款把产品从功能品变成内容和符号。</li>
+                <li>线下店的价值在于体验、展示和转化。消费者可以亲自选择材料、颜色和款式，提高参与感，也提高溢价能力。</li>
+                <li>联名机制能借用 IP、明星或品牌的粉丝基础，降低传播成本，制造稀缺感和购买理由。</li>
+                <li>商业模式上，它结合了产品销售、品牌溢价、零售体验和用户共创，属于产品与服务融合模式。</li>
+                <li>风险在于联名热度不可持续、库存管理复杂、过度依赖外部 IP。长期要形成自身品牌资产，而不是只靠联名。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>这类题要写“功能价值之外的情绪价值和体验价值”，不要只分析成本和价格。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q06">
+          <div class="worked-head"><h3>题 6：WeWork 与 IWG 的差异说明什么</h3><span class="tag blue">共享办公</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件将 WeWork 放在共享办公模式中。WeWork 创始人 Adam Neumann 强调“让人们为热爱而工作”，试图把办公空间做成社区、社交和幸福感场景；课件还展示其女性交流活动、VR 解压活动等社区运营。但同一课件指出，在近似业务模式下，IWG 早已实现盈利，而 WeWork 曾长期巨额亏损，孙正义投资该项目也遭受巨大损失。公开资料显示，WeWork 在 2019 年 IPO 受挫前后暴露出高增长、高亏损和治理争议。<strong>作答要求：</strong>请从固定租赁成本、出租率、社区溢价、融资扩张和单位经济模型角度评价共享办公是否可持续。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>共享办公的价值创造在于灵活办公空间、低承诺租赁、社区活动和企业服务。但价值创造不等于商业可持续。</li>
+                <li>核心矛盾是长期租赁成本和短期客户收入之间的期限错配。经济下行或出租率下降时，固定成本会迅速压垮现金流。</li>
+                <li>WeWork 的问题在于过度强调增长叙事和社区概念，扩张速度可能快于单店盈利模型验证。IWG 更像传统稳健空间运营，重视成本控制和成熟客户。</li>
+                <li>评价该模式要看单位经济模型：单个空间出租率、租金差价、装修摊销、获客成本、续约率和增值服务收入。</li>
+                <li>改进建议是先验证单店模型，再复制扩张；降低固定租赁压力；增加企业客户和服务收入；避免用融资补贴伪装成盈利能力。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把“共享”天然等同于先进。案例题要看收入成本结构，尤其是固定成本和现金流。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q07">
+          <div class="worked-head"><h3>题 7：共享汽车模式值得支持吗</h3><span class="tag amber">思考题</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件提出“共享汽车思考题”。支持方认为共享汽车能让用户用较低价格开上宝马、奥迪等车辆，不用买车、买保险和维修保养，在北京、上海、深圳等限行城市还可能解决临时出行问题。反对方认为，共享汽车可能只是融资故事：企业用少量首付拿下大量车辆，快速铺车、雇人、融资、再扩大规模，最后追求上市估值；同时，车辆可能增加道路拥堵、停车压力和污染。课件还展示共享奥迪、共享宝马、深圳共享汽车的使用流程。<strong>作答要求：</strong>请判断共享汽车商业模式是否成立，并分析用户价值、单车收入、车辆折旧、停车保险、运维调度和社会外部性。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>共享汽车确实有需求基础，尤其适合短途、临时、限购限行城市和不想养车的人群。它的价值主张是降低拥有成本，提高使用便利性。</li>
+                <li>但商业模式是否成立，取决于车辆购置、停车、保险、维修、调度、清洁、折旧和坏账等成本能否被使用收入覆盖。</li>
+                <li>如果企业主要依赖融资买车、快速铺量、用规模故事拉高估值，而单车日均收入不足以覆盖成本，就不是可持续商业模式，而是资本驱动扩张。</li>
+                <li>社会层面还要看是否减少私家车拥有，还是增加道路车辆和停车压力。如果只增加供给不替代私家车，公共价值有限。</li>
+                <li>结论是共享汽车不是天然好或坏。它适合在高密度、高周转、停车资源可控、运维能力强的场景中小规模验证，再逐步扩张。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要只站正方或反方。高分答案要同时写用户价值、单位经济模型和社会外部性。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q08">
+          <div class="worked-head"><h3>题 8：Better Place 和 Webvan 为什么失败</h3><span class="tag">精益创业</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>Better Place 是以色列公司，创始人 Shai Agassi 设想用电池屋和换电网络解决电动汽车补能问题。课件提到建设和维护一个电池屋成本超过 100 万美元，公司在以色列和丹麦大面积铺开，最终破产。Webvan 是互联网泡沫时期的线上生鲜杂货配送公司，课件提到其用机器人实现全自动配送，并在全美多个城市全面铺开，但最终失败，部分自动化仓储技术后来被亚马逊吸收。公开资料也显示，两家公司都曾大量融资并进行重资产投入。<strong>作答要求：</strong>请用精益创业解释：为什么未经验证的需求、成本结构和单位经济模型不能直接规模化。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>两者失败的共同点是把未经充分验证的商业假设直接用重资产方式放大。它们先假定市场需求、用户行为、运营效率和成本结构都能成立，再进行大规模投入。</li>
+                <li>Better Place 的关键假设包括用户愿意接受换电模式、车企愿意配合、电池标准能统一、换电站利用率足够高。如果这些假设未验证就铺开，单站成本会变成沉没成本。</li>
+                <li>Webvan 的关键假设包括线上买菜需求足够大、配送密度足够高、自动化仓储能降低总成本。如果订单密度不足，先进仓储反而扩大亏损。</li>
+                <li>精益创业要求先做 MVP，用局部市场、少量用户和可测指标验证痛点，再决定坚持、转向或放弃。不是先建全国网络再找需求。</li>
+                <li>启示是：越是重资产、基础设施和网络型业务，越要小范围验证单位经济模型。速度快不等于铺得大，真正的速度是学习速度。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要写成“钱烧完了所以失败”。钱烧完只是结果，根因是关键假设未经验证就规模化。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q09">
+          <div class="worked-head"><h3>题 9：Google Glass 的转向说明什么</h3><span class="tag blue">MVP 与转向</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件将 Google Glass 作为精益创业案例。早期 Google Glass Explorers 售价较高，最初构想偏消费级和新奇体验，甚至课件提到其“最初构想居然是泡妞神器”。但后来出乎预料的是，产品在商业客户中找到更清晰出路：例如仓储分拣、装配和维修场景中，员工可以减少在电脑和配件之间来回切换，降低错误、提高效率；课件还提到 DHL 将 Google Glass 用于产品分拣。<strong>作答要求：</strong>请分析 Google Glass 为什么需要从消费市场转向企业场景，以及这体现了客户导向、MVP 和转向。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>Google Glass 的早期问题不是技术完全没有价值，而是目标客户和核心场景不清晰。消费者可能觉得新奇，但不一定愿意高价购买并长期使用。</li>
+                <li>企业场景的价值更具体：员工在分拣、维修、培训时需要解放双手、实时查看信息、减少错误。这是明确痛点。</li>
+                <li>精益创业强调客户导向。产品最初设想和真实市场反馈不一致时，应根据数据转向，而不是坚持原始想象。</li>
+                <li>这个案例说明 MVP 的目的不是证明创始人正确，而是尽快发现谁真正需要产品、为什么需要、愿意为哪些功能付费。</li>
+                <li>结论是，技术型创业要避免“有技术就有市场”的错觉。应从高频刚需场景切入，再逐步扩展。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>案例题中“失败产品”常常不是彻底失败，而是原定位失败。要写出转向逻辑。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q10">
+          <div class="worked-head"><h3>题 10：如何评价拓竹、正浩、速腾这类机会</h3><span class="tag">创业机会</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把 Gore-Tex、拓竹科技、正浩创新、速腾聚创等归入“对创业前工作中的想法进行复制或完善”的机会来源。也就是说，创业者不是凭空想出点子，而是在过去工作、技术积累、供应链接触或行业痛点中发现问题，再用新产品或新方案改进。拓竹涉及 3D 打印消费化，正浩创新面向便携储能和户外用电，速腾聚创面向激光雷达和智能驾驶感知。<strong>作答要求：</strong>请说明这类机会为什么更接近真实需求，并用行业市场、经济性、竞争优势、团队匹配和机会窗口进行评价。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>创业前工作经验是重要机会来源，因为创业者在原行业中更容易看到真实痛点、技术缺口、客户需求和供应链资源。</li>
+                <li>这类机会的优势是信息不对称小、行业理解深、资源可迁移，创业者知道客户为什么不满意，也知道现有方案哪里可改进。</li>
+                <li>但它不自动等于好机会。要评价市场是否足够大、客户是否愿意付费、产品是否有差异化、团队是否有技术和商业能力、进入时机是否合适。</li>
+                <li>用蒂蒙斯框架看，应重点检查行业市场、经济性、竞争优势和管理团队。如果有致命缺陷，例如专利侵权、法规障碍、供应链不可控，就应否决。</li>
+                <li>结论是，来自工作经验的机会往往更扎实，但必须从“我知道问题”升级为“我能用可盈利方式解决问题”。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把机会等同于灵感。考试要写“机会需要被评价和筛选”。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q11">
+          <div class="worked-head"><h3>题 11：锤子手机为什么错过机会窗口</h3><span class="tag amber">时机</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把锤子手机列为“太晚进入市场”的机会窗口案例。锤子科技先以 Smartisan OS 和罗永浩个人影响力积累关注，2014 年才发布第一款 Smartisan T1；此时中国智能手机已经从增量普及进入强竞争阶段，小米、华为、OPPO、vivo、苹果等企业在供应链、渠道、价格带和品牌心智上都已经占位。课件同时提到汽车之家较早抓住汽车消费信息化窗口，理想汽车在新能源和家庭用车需求上抓住新窗口，花西子赶上国潮美妆和内容电商传播窗口。<strong>作答要求：</strong>请分析创业时机为什么会影响机会价值，并比较“太早进入”“太晚进入”和“窗口期匹配”的不同后果。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>创业机会有窗口期。过早进入，市场教育成本高；过晚进入，头部企业已经建立品牌、渠道、供应链和用户心智，新进入者难以突破。</li>
+                <li>锤子手机进入时，智能手机行业已经形成强竞争格局，硬件供应链、渠道、系统生态和品牌认知都需要巨大投入。仅靠情怀和设计很难形成持续壁垒。</li>
+                <li>汽车之家和理想汽车更好地匹配了市场趋势和用户需求。前者抓住汽车消费信息化，后者在新能源和家庭用车场景中找到定位。</li>
+                <li>花西子抓住了国潮、中国风和新消费传播窗口，把文化符号、产品设计和内容营销结合起来。</li>
+                <li>启示是，创业者既要看机会是否真实，也要看进入时机是否合适。时机判断包括技术成熟度、消费者接受度、竞争格局、政策环境和资本环境。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把锤子手机简单归因于“罗永浩个人”。案例分析要回到行业时机、竞争格局和资源匹配。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q12">
+          <div class="worked-head"><h3>题 12：股权分配应出资多说了算还是技术强说了算</h3><span class="tag">团队股权</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件在创业团队部分设置了一个高频思考题：创业公司早期常见两类核心贡献者，一类提供启动资金、承担现金风险和外部资源压力，另一类掌握核心技术、产品能力或关键客户资源。现实中团队容易把“出钱多”“技术强”“关系好”“先加入”直接等同于股权比例，甚至等项目做大后才讨论分配，结果出现平均主义、兼职合伙人拿大股、离职成员长期占股、核心创始人没有控制权等问题。<strong>作答要求：</strong>请判断股权分配是否应由单一因素决定，并说明股权何时谈、如何谈、怎样设置成熟期、退出回购和控制权安排。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>股权分配不能简单按出资或技术单一维度决定。创业公司最重要的是未来贡献、控制权稳定和长期激励。</li>
+                <li>出资重要，因为资金承担风险；技术也重要，因为技术决定产品能力。但还要考虑创始人角色、全职投入、市场资源、管理能力、业务贡献和持续服务期限。</li>
+                <li>较合理的做法是在团队组建初期就谈清楚基本原则，同时设置分期兑现。股权不应一次性全部给完，应与服务期限、里程碑和贡献挂钩。</li>
+                <li>需要保留股权池，用于后续核心员工、顾问和投资人激励；同时设置退出机制，防止合伙人离开后仍长期占有大量股权。</li>
+                <li>控制权方面，通常应保证核心创始人有明确权力中心，否则重大决策容易陷入僵局。公平不是平均分，而是贡献、风险和责任的匹配。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>这题最容易写成价值观辩论。标准答案要落到股权绑定、分期兑现、退出机制和控制权。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q13">
+          <div class="worked-head"><h3>题 13：真功夫和海底捞的股权启示</h3><span class="tag blue">控制权</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用真功夫和海底捞说明股权设计对创业团队长期稳定的影响。真功夫从中式快餐企业做大后，家族成员、夫妻关系、经营权和股权利益交织，企业内部矛盾公开化，说明创业早期若只凭亲情和信任合作，而没有清晰股东协议、表决机制和退出安排，企业越大冲突越尖锐。海底捞则被课件作为股权整合案例，用来说明创始团队在企业成长中需要逐步处理早期不合理股权，使控制权、经营责任和长期激励匹配。<strong>作答要求：</strong>请分析不合理股权结构会造成什么治理问题，并总结创业团队应如何提前设计股权、控制权和争议解决机制。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>创业企业股权结构不合理，会导致决策权不清、家族矛盾、利益冲突和治理僵局。尤其是夫妻、亲戚、朋友合伙时，情感关系容易掩盖制度缺失。</li>
+                <li>真功夫案例体现了创业初期如果没有清晰契约、控制权安排和退出机制，企业做大后矛盾会被放大。</li>
+                <li>海底捞的启示是，创始人需要逐步把不合理的股权结构调整为更稳定的治理结构，使控制权、经营责任和长期激励相匹配。</li>
+                <li>股权设计应避免平均主义、短期资源换过多股权、兼职人员拿大股、天使投资人过早控股等问题。</li>
+                <li>建议是：创业早期签署股东协议，明确表决权、岗位责任、分红规则、股权成熟期、离职回购、竞业限制和争议解决机制。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要只写“亲兄弟明算账”。要用治理语言：控制权、契约、退出、回购、表决权。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q14">
+          <div class="worked-head"><h3>题 14：DeepSeek 的股权架构为什么值得分析</h3><span class="tag amber">激励与控制</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把 DeepSeek 股权架构作为“激励与控制”的分析案例，展示的重点不是某个自然人持股百分比，而是多层公司架构的治理逻辑：顶层公司或控制平台负责战略决策和最终控制，中层平台承载核心团队、员工激励和潜在融资安排，底层主体公司负责具体业务运营、研发和商业化。这样的安排常见于技术型创业公司，因为企业既要吸引关键人才，又要保留创始团队对技术路线和长期战略的主导权。<strong>作答要求：</strong>请从控制权、员工激励、融资便利、风险隔离和合规透明五个角度分析这种架构的作用与风险。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>这种多层架构的核心目的，是在控制权、团队激励和融资便利之间取得平衡。</li>
+                <li>顶层控制平台有利于创始人或核心控制人保持战略决策权，避免融资稀释后失去方向控制。</li>
+                <li>中层平台可以承载核心团队股权激励，使关键人才的利益与公司长期发展绑定，同时方便未来引入投资人或设置期权池。</li>
+                <li>底层主体公司聚焦业务运营，减少股东结构过于复杂对日常经营的影响。</li>
+                <li>风险在于架构过度复杂可能带来税务、合规、信息透明和利益冲突问题。因此需要清晰章程、股东协议和治理边界。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要只算持股比例。要说明架构背后的治理目的：控制、激励、融资和风险隔离。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q15">
+          <div class="worked-head"><h3>题 15：空空狐余小丹与投资人争议的症结在哪里</h3><span class="tag">创业融资</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>空空狐是女性闲置交易平台，课件用创始人余小丹与投资人周亚辉的冲突说明融资后的治理风险。余小丹公开称自己在患病期间被投资方踢出董事会和 CEO 职位，股权被大幅压缩；投资方则反驳称其资金使用、经营管理和公司治理存在严重问题，自己是在挽救公司。双方说法互相冲突，但共同暴露出融资后重大事项决策、资金用途、董事会席位、创始人职责、信息披露和控制权安排没有形成稳定共识。<strong>作答要求：</strong>请不要站队写道德判断，而要分析投融资双方为什么会冲突，症结在哪里，创业者应如何在融资前用契约和治理机制防止失控。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>这不是简单的谁道德更高问题，而是创业者与投资人之间目标、治理权、信息透明和契约安排的冲突。</li>
+                <li>从创业者角度，创始人对企业有情感投入和愿景，但如果没有保留足够控制权、没有理解融资条款，就可能在经营困难时失去主动权。</li>
+                <li>从投资人角度，资金需要被有效使用。如果企业经营混乱、财务不透明或业绩偏离预期，投资人会通过董事会、条款或股权安排保护自身利益。</li>
+                <li>症结在于融资前没有把权责边界、资金用途、重大事项决策、创始人离岗或健康异常、业绩未达标时的处理机制约定清楚。</li>
+                <li>启示是：创业融资不仅是拿钱，还要管理投资人关系。创始人要理解条款，建立财务透明和治理机制，同时选择价值观和资源匹配的投资人。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>考试不能写成站队小作文。要从契约、控制权、治理和信息透明分析。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q16">
+          <div class="worked-head"><h3>题 16：对赌协议为什么既可能成就蒙牛也可能伤害俏江南</h3><span class="tag blue">对赌协议</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把蒙牛和俏江南张兰放在对赌协议中对比。蒙牛在高速成长阶段引入资本，并通过业绩目标和上市预期获得融资支持，最终把对赌变成增长加速器；俏江南张兰则在引入资本后遭遇上市受阻、回购或估值调整压力、控制权变化等问题，后来把这段经历概括为资本陷阱。两者说明，对赌协议并非天然好坏，而是投资人与创业者对未来业绩、上市时间、估值调整和风险承担的契约安排。<strong>作答要求：</strong>请解释对赌协议的本质、积极作用和潜在伤害，并说明创业者签署此类条款前应评估哪些经营、现金流和控制权风险。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>对赌协议本质是估值调整协议。投资方和融资方对未来业绩或上市等不确定事件作出约定，未达标时融资方需要现金补偿、股权回购或转让股权。</li>
+                <li>它的积极作用是降低投资人风险，帮助企业在不确定条件下获得融资，也能倒逼团队提高经营效率。</li>
+                <li>风险在于业绩目标过高、外部环境变化、现金流压力和控制权丧失。一旦未达标，创始人可能被迫回购、转让股权甚至出局。</li>
+                <li>蒙牛成功说明当企业增长能力、行业机会和团队执行力足够强时，对赌可以成为加速器。俏江南的教训说明如果条款过重、上市节奏受阻或现金流不足，对赌会变成枷锁。</li>
+                <li>创业者应做到：合理估值，不盲目追高；设置可实现目标；约定不可抗力和延期机制；保留核心控制权；请专业法律财务顾问审查条款。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把对赌写成坏东西。它是工具，关键看估值、目标、条款和企业真实增长能力是否匹配。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q17">
+          <div class="worked-head"><h3>题 17：刘强东股权比例不高为什么还能控制京东</h3><span class="tag amber">控制权保护</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用京东说明“持股比例不等于控制权”。京东在多轮私募融资和上市后，创始人刘强东的经济持股比例被稀释，外部投资人与公众股东持有大量股份；但通过差异化投票权、章程安排、董事会席位和重大事项设计，创始人仍能对公司战略方向保持较强影响力。这个案例也提醒创业者：融资带来资金、渠道和声誉，但同时改变股东结构，如果没有提前设计表决权和董事会机制，创始人可能在企业做大后失去主导权。<strong>作答要求：</strong>请分析融资后控制权保护的工具、边界和代价。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>融资必然带来股权稀释，但股权比例不完全等于控制权。控制权还取决于表决权、董事会席位、章程安排和股东协议。</li>
+                <li>京东案例说明，通过双重股权或差异化投票权，可以让创始人在持股比例较低时仍掌握重大事项决策权。</li>
+                <li>其他保护工具包括公司章程中的反收购条款、董事会相对固化、股份回购安排、毒丸计划、帕克曼防御和分级股东权利。</li>
+                <li>但控制权保护也要有边界。过强控制可能损害中小股东利益，降低外部监督，甚至让企业过度依赖个人。</li>
+                <li>创业者应在融资前设计控制权结构，明确哪些事项必须由创始人或核心团队同意，同时保持透明治理和经营绩效，以换取投资人信任。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>这题不能只写“刘强东厉害”。要写股权和表决权分离，以及控制权保护的利弊。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q18">
+          <div class="worked-head"><h3>题 18：OROLAY 和五菱宏光如何避开巨头</h3><span class="tag">新企业生成</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把 OROLAY 亚马逊外套和五菱宏光放在新企业生成部分。OROLAY 没有去正面挑战加拿大鹅、Moncler 等高端羽绒服品牌，而是在亚马逊平台用高性价比、实用保暖、用户评价和社交传播切入，被媒体称为“Amazon coat”。五菱宏光也没有用豪华、性能或科技叙事与大车企争夺高端市场，而是把“人民的代步车”“便宜耐用”“拉人载货”等真实需求做到清楚。<strong>作答要求：</strong>请分析新企业面对巨头时，为什么应选择细分市场、低端切入、差异化定位或平台借力，而不是一开始就正面硬拼资源。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>新创企业通常面临品牌弱、资源弱、渠道弱和合法性弱，不能一开始就在巨头主战场硬碰硬。</li>
+                <li>OROLAY 没有直接争夺高端奢侈羽绒服心智，而是在亚马逊平台、性价比和日常穿搭场景中找到差异化入口。</li>
+                <li>五菱宏光的成功在于精准定位低价、大众、实用和多场景，避开高端性能叙事，把目标用户真实需求做到极致。</li>
+                <li>新企业应选择细分市场、低端切入、平台借力、差异化定位和快速反馈，用局部优势积累品牌和现金流。</li>
+                <li>等到资源、品牌和能力增强后，再决定是否扩展市场。过早引起巨头注意或模仿巨头打法，会让新企业陷入资源消耗战。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>关键词是“定位”。不要泛泛写营销成功，要解释为什么这个定位能避开巨头优势。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q19">
+          <div class="worked-head"><h3>题 19：奇瑞多品牌尝试与五菱定位有什么对比</h3><span class="tag blue">企业生成与定位</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件在企业生成和成长中对比了奇瑞与五菱。奇瑞早期有较强自主品牌基础，但在第一次产品多元化和多品牌策略中，尝试瑞麒、观致等更高端或更细分品牌时，并没有顺利形成清晰用户认知，可能带来品牌稀释、渠道分散、资源投入过重和产品定位不稳定。五菱宏光则长期围绕价格敏感、实用导向的大众用户，把低价、可靠、多用途和下沉市场需求作为核心定位。<strong>作答要求：</strong>请比较二者在品牌定位、资源聚焦、市场选择和能力边界上的差异，并判断企业何时适合多品牌扩张。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>多品牌和多元化不是错误本身，错误在于品牌定位、资源能力、渠道体系和消费者认知没有匹配。</li>
+                <li>奇瑞向多个品牌或更高端市场延伸时，可能面临品牌认知不足、产品力支撑不够、渠道协同不清和资源分散的问题。</li>
+                <li>五菱宏光更聚焦，清楚知道服务谁：价格敏感、重视实用、需要代步和载货能力的大众用户。它没有急于讲高端故事，而是把核心价值做到稳定。</li>
+                <li>对新企业或成长企业来说，扩张前应先回答：原品牌能否支撑新定位，用户是否认可，资源是否足够，渠道是否匹配，失败成本是否可承受。</li>
+                <li>结论是，定位清晰和资源聚焦往往比盲目多品牌更重要。企业成长要先建立根据地，再考虑延伸。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把多元化一概否定。正确答案是“相关多元化、资源匹配和定位清晰”才可能成功。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q20">
+          <div class="worked-head"><h3>题 20：李锦记多元化为什么可以作为成长案例</h3><span class="tag">企业成长</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把李锦记作为企业成长和传承的重点案例。李锦记从蚝油起家，先围绕调味品建立品牌、工艺、质量控制和渠道能力，再逐步扩展到更多酱料品类、海外市场和相关业务，并出现地产等投资布局。与单纯“什么赚钱做什么”的多元化不同，李锦记的主线是先把核心产品和品牌做强，再在现金流、组织能力和家族治理支撑下扩大边界。<strong>作答要求：</strong>请用专业化成长、市场渗透、市场开发、多元化、国际化和能力协同等概念分析李锦记成长路径，并说明多元化成功需要哪些前提。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>李锦记的成长首先建立在核心业务基础上。蚝油和调味品形成品牌、渠道、生产和质量管理能力，这是多元化的根基。</li>
+                <li>企业成长可以分为专业化成长、市场渗透、市场开发、多元化和国际化。李锦记既有调味品主业的专业化，也有跨地区市场开发和部分多元化投资。</li>
+                <li>多元化成功的前提是主业现金流稳定、治理能力足够、投资边界清楚。否则多元化会分散资源，削弱主业。</li>
+                <li>李锦记还体现了家族企业长期主义。品牌、质量、渠道和家族治理共同支撑企业跨代成长。</li>
+                <li>启示是，成长战略不能只看规模扩大，还要看是否形成协同效应、是否增强抗风险能力、是否符合企业能力边界。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>多元化题要写“相关性、协同和能力边界”。不要只写“业务越多越安全”。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q21">
+          <div class="worked-head"><h3>题 21：腾讯游戏投资并购体现什么成长逻辑</h3><span class="tag blue">并购扩张</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用腾讯游戏投资并购说明外部成长。腾讯不仅依靠自研和发行，也长期投资或收购国内外游戏公司和工作室，例如与《英雄联盟》开发商 Riot Games、Supercell、Epic Games 等形成股权或合作关系，用资本获取内容、研发团队、全球用户、技术引擎和产品管线。游戏行业单一爆款生命周期有限，外部并购可以扩大内容组合，但也可能带来估值过高、文化冲突、监管审查、团队流失和创新活力下降。<strong>作答要求：</strong>请分析并购扩张如何帮助企业成长，同时说明它为什么不是简单“买公司就能变强”。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>并购扩张能帮助企业快速获得产品、技术、人才、市场份额和内容版权，比内部孵化更快。</li>
+                <li>腾讯游戏投资并购的逻辑，是通过外部成长方式构建全球内容和研发网络，降低单一产品风险，并获得优秀团队的创新能力。</li>
+                <li>并购还可以消灭或弱化竞争对手，提高市场占有率，形成平台、渠道和内容之间的协同。</li>
+                <li>风险包括估值过高、文化冲突、核心人才流失、整合失败、监管风险和创新活力下降。</li>
+                <li>因此，好的并购不是买资产，而是买能力和协同。企业要明确并购目的，保留被投团队创造力，并建立有效整合机制。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>并购题要同时写优势和风险。只写“买买买能变强”不够。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q22">
+          <div class="worked-head"><h3>题 22：李锦记和洛克菲勒家族传承的共同点</h3><span class="tag amber">企业传承</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把李锦记与洛克菲勒家族放在企业传承部分。李锦记家族传承的重点不是简单让下一代接班，而是确立家族核心价值观、设立家族委员会、制定家族宪法，用制度管理家族成员、企业经营和财富安排；公开资料也提到李锦记家族有长期传承计划和家族治理机制。洛克菲勒家族则通过家族办公室、公益基金、教育和声誉管理，把财富传承与价值观和社会影响结合起来。<strong>作答要求：</strong>请分析家族企业传承为什么必须同时处理股权、管理权、财富、文化和接班人培养，而不能只靠血缘顺序。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>家族企业传承不是把企业交给下一代这么简单，而是管理权、治理权、股权、财富和文化的系统传承。</li>
+                <li>李锦记的启示是用制度管理家族关系。核心价值观回答“家族为什么在一起”，家族委员会解决沟通和治理，家族宪法明确规则。</li>
+                <li>洛克菲勒家族体现了财富传承与价值观、公益、教育和家族声誉的结合，使财富不只是消费资源，而是长期影响力。</li>
+                <li>家族传承的风险包括二代能力不足、兄弟姐妹争产、所有权和经营权混乱、企业文化断裂、财富分散缩水。</li>
+                <li>建议是提前规划接班人培养，区分股东身份和经营岗位，建立董事会和家族会议机制，设计股权信托或协议安排，保持价值观和治理规则稳定。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把传承写成“子承父业”。高分答案要写管理、治理、股权、财富和文化五个层面。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q23">
+          <div class="worked-head"><h3>题 23：多个商业模式小案例如何分类分析</h3><span class="tag">商业模式综合</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>这是一道商业模式综合题。课件中的 BuiltWith 把网站使用的技术、插件和广告工具识别出来，做成持续更新的数据服务；Adobe 把一次性购买软件转向 Creative Cloud 订阅；吉列用剃刀架带动刀片耗材；雅芳/玫琳凯依赖直销员网络；荷兰鲜花拍卖用降价钟为易腐鲜花快速定价；Costco 通过会员费、低毛利精选商品和退换货信任提高复购；美国运通黑卡售卖身份、稀缺和高端服务；SodaStream 把碳酸饮料消费搬到家庭场景并出售机器与耗材；SuperMonkey 用按次预约小团课改造传统健身年卡；Airbnb 撮合闲置房源和住宿需求，Ofo 则暴露共享模式中的押金、补贴和运维风险。<strong>作答要求：</strong>请逐一归类其商业模式，并说明每种模式如何创造、传递和获取价值。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>BuiltWith 和 Adobe 属于订阅模式。前者把技术数据做成持续更新的信息服务，后者把软件一次性购买变成持续付费。关键看续费率、客户黏性和持续更新能力。</li>
+                <li>吉列剃刀是饵与钩模式，用剃刀获取用户，靠刀片耗材长期盈利。风险是替代耗材、用户转换和初始补贴过高。</li>
+                <li>雅芳和玫琳凯体现直销/金字塔式销售网络，优势是人际传播和低固定渠道成本，风险是库存压力、激励扭曲和合规边界。</li>
+                <li>荷兰鲜花拍卖适合保质期短、标准化程度高的商品，核心价值是快速价格发现和集中交易。风险是质量标准、物流和平台信任。</li>
+                <li>Costco 和美国运通黑卡都是忠诚模式，但层级不同。Costco 靠会员费、低毛利精选商品和高信任复购；黑卡靠身份、稀缺和专属服务。</li>
+                <li>SodaStream 与 SuperMonkey 属于模式创新。前者重构饮料消费场景，后者改造传统健身房年卡模式，核心是用新场景降低用户决策成本。</li>
+                <li>Airbnb 是较典型的共享平台，用信任机制匹配闲置房源和住宿需求；Ofo 则说明共享模式若只靠融资补贴和铺量，可能造成资源浪费和现金流危机。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>商业模式分类题不要背名字，要回答“谁付钱、为什么付、成本在哪里、能不能持续”。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q24">
+          <div class="worked-head"><h3>题 24：团队案例如何从契约和股权角度分析</h3><span class="tag blue">团队综合</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把多个团队案例放在一起考察创业团队治理。完美幻境用于提醒早期合伙人的承诺、贡献、离开和股权归属必须制度化；张艺谋与张伟平说明创意人和商业伙伴只靠情义合作，长期会在收入分配、品牌归属和决策权上产生冲突；万通六君子体现多位强人合伙时需要共同规则和清晰权力边界；李子柒与微念涉及内容创作者、MCN、品牌公司和股权控制的矛盾；雷士照明和土豆网王微分别说明控制权、婚姻财产和上市进程都可能影响企业；Valve、Facebook、携程和小米则展示团队互补、核心高管引入和组织文化的重要性。<strong>作答要求：</strong>请从能力互补、契约精神、股权成熟、权力中心、退出机制和特殊关系风险六个角度综合分析。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>第一，团队要能力互补。腾讯、携程、小米案例都说明，创业团队应覆盖技术、产品、市场、资本、管理和设计等关键能力，不能只有单一强人。</li>
+                <li>第二，团队要有契约精神。张艺谋与张伟平的合作说明，只靠情义和口头默契，在利益扩大后会出现作品方向、收入分配和决策权冲突。</li>
+                <li>第三，要有清晰权力中心。万通六君子、雷士照明、李子柒与微念等案例都说明，目标、品牌权属、控制权和重大事项决策必须提前约定。</li>
+                <li>第四，股权要绑定长期贡献。完美幻境、Valve、Facebook 等案例可用于说明，早期合伙人的股权应与服务期限、贡献和退出机制挂钩。</li>
+                <li>第五，特殊关系要制度化。土豆网王微、夫妻创业、家族或朋友合伙都要把离婚、离职、犯罪、死亡、回购、竞业限制写进协议。</li>
+                <li>结论是，高效创业团队不是“关系好”，而是目标一致、能力互补、权责清晰、股权合理和退出有规则。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>团队题不要写成“要团结”。团结是结果，制度、股权、权力中心和互补能力才是原因。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q25">
+          <div class="worked-head"><h3>题 25：创业机会案例如何用蒂蒙斯框架评价</h3><span class="tag amber">机会综合</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把这些案例放在创业机会识别与评价中：AI 公司群和 PetGPT 代表新技术浪潮下的应用型机会，但要验证用户真实需求、数据质量和责任边界；Gore-Tex 来源于材料技术突破，解决户外服装防水透气问题；拓竹科技把 3D 打印做得更易用、更接近消费级；正浩创新切入户外、应急和家庭备电等便携储能场景；速腾聚创围绕激光雷达和智能驾驶感知；宇树科技、追觅体现机器人、高速马达和硬件供应链能力；花西子抓住国潮美妆和内容传播窗口；Gatorade 源于运动员补水、电解质和能量补充痛点；昂跑运动鞋围绕跑步缓震、回弹和舒适感做技术与品牌表达。<strong>作答要求：</strong>请用蒂蒙斯框架评价这些机会的行业市场、经济性、竞争优势、团队匹配、机会窗口和致命缺陷。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>行业和市场维度：AI、机器人、新能源、运动健康、国潮美妆等都处在增长市场，但增长快不等于每个项目都能成功，要看具体细分场景和付费客户。</li>
+                <li>经济性维度：PetGPT、AI 绘图、数据标注等软件或平台项目边际成本可能较低，但算力、获客和准确率成本也很高；硬件项目如宇树、追觅、速腾则要看量产成本和毛利。</li>
+                <li>竞争优势维度：Gore-Tex、追觅高速马达、速腾传感器、宇树机器人都依赖技术壁垒；花西子更多依赖品牌、文化符号和渠道传播。</li>
+                <li>团队维度：拓竹、正浩、速腾、追觅等案例都来自行业经验或技术团队，说明团队与机会匹配很重要。创业者知道行业痛点，才更可能把创意变成机会。</li>
+                <li>机会窗口维度：锤子手机说明太晚进入会失败；理想汽车、花西子说明时机、消费趋势和产品定位匹配时，机会窗口才真正打开。</li>
+                <li>致命缺陷维度：AI 医疗/宠物诊断要注意责任边界，机器人要注意成本和安全，硬件要注意供应链，美妆要注意品牌生命周期。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>机会题不要只说“赛道好”。赛道好只是行业维度，还要写经济性、竞争优势、团队、窗口和致命缺陷。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q26">
+          <div class="worked-head"><h3>题 26：融资案例如何同时分析资金和控制权</h3><span class="tag">融资综合</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把融资案例集中到“钱、条款、控制权”三条线。史玉柱案例提醒债务、担保和现金流压力会把个人信用与企业风险绑定；空空狐说明融资后若资金使用、董事会和创始人职责不清，投资人关系会失控；育碧抵御 Vivendi、万科王石控制权之争说明成熟公司也会遭遇资本争夺；1 号店、去哪儿体现引入大股东或平台资本后，创始人可能被边缘化；俏江南与蒙牛说明对赌协议既可能加速增长，也可能导致回购和控制权压力；华为、立白、方太不上市提醒上市不是唯一选择；京东和找钢网则说明融资还要考虑投票权、产业资源和长期战略。<strong>作答要求：</strong>请说明创业融资为什么不能只看融资金额，而要同时分析融资方式、估值、条款、投资人资源、现金流和控制权。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>融资首先要区分债权和股权。史玉柱案例说明债权、担保和个人信用会带来刚性偿还压力；股权融资则带来股权稀释和控制权变化。</li>
+                <li>空空狐、1 号店、去哪儿、万科等案例说明，资本进入后，创始人如果不理解董事会、表决权、回购条款和清算优先权，就可能被边缘化甚至出局。</li>
+                <li>俏江南和蒙牛说明对赌协议是双刃剑。增长能力强、目标合理时可以加速发展；目标过高或上市受阻时会损害创始人控制权和现金流。</li>
+                <li>育碧反收购和毒丸计划说明，控制权保护不仅是创业初期问题，公司成熟后仍可能遭遇恶意收购或资本争夺。</li>
+                <li>华为、立白、方太不上市说明上市不是唯一正确答案。不上市可以保持独立和长期主义，但要有足够现金流和融资替代方案。</li>
+                <li>京东和找钢网说明，融资成功不仅是拿到钱，还包括选择合适投资人、设计表决权、保留战略控制并获得资源支持。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>融资题不要写“钱越多越好”。正确思路是资金、资源、条款、控制权和长期战略同时分析。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q27">
+          <div class="worked-head"><h3>题 27：成长和传承案例如何合并作答</h3><span class="tag blue">成长传承综合</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>这道题把企业成长和传承合并考。复星案例展示企业从创立、内生增长、外部并购、上市扩张到调整瘦身的阶段变化；小米印度属于市场开发，把国内能力迁移到海外新市场；李锦记与荣甡蚝油庄对比传统工艺如何被现代管理、品牌和渠道放大；腾讯游戏并购、安踏收购和李书福汽车布局体现外部成长；跟着星巴克开店说明小企业可借成熟商圈验证需求；龟甲万、李锦记家族和洛克菲勒家族强调跨代传承要靠制度、价值观和治理；Jim Collins 第五级经理人则提醒企业不能只依赖强人，而要建立可传承的组织能力。<strong>作答要求：</strong>请分析企业不同成长阶段应选择什么战略，并说明成长成果如何通过制度传承下来。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>成长阶段不同，战略不同。复星从创立、内生增长、并购扩张到瘦身，说明企业不能永远用同一种增长方式。</li>
+                <li>内部成长包括市场渗透、市场开发、多元化和国际化。小米印度体现市场开发，李锦记体现主业现代化、多元化和国际化，荣甡则说明只守传统可能错过现代化。</li>
+                <li>外部成长包括并购和特许经营。腾讯游戏、安踏、李书福说明并购能快速获取品牌、技术、人才和市场，但必须解决整合和文化冲突。</li>
+                <li>跟着星巴克开店说明小企业也能利用成熟品牌验证过的客流和场景，做细分定位和低成本运营。</li>
+                <li>传承阶段要从人治走向制度。龟甲万、李锦记家族和洛克菲勒家族说明，技术、管理、文化、股权和财富都要制度化安排。</li>
+                <li>Jim Collins 第五级经理人说明，真正能传承的企业不能依赖“一个天才加一百个助手”，而要靠谦逊坚忍的管理者、强董事会和职业经理人团队。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>成长题要写战略匹配，传承题要写制度安排。不要把成长等同于规模，把传承等同于交给下一代。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q28">
+          <div class="worked-head"><h3>题 28：格子互动与创业讲坛为什么都要用创业定义判断</h3><span class="tag">创业定义</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件最开始用“格子互动与创业讲坛”训练创业定义。格子互动是学生创立的信息技术公司，面向客户提供产品或服务，需要寻找机会、组织团队、配置资源、承担收入和成本不确定性。创业讲坛则更像校园创业教育或社群活动，通过邀请企业家分享经验创造知识价值，但如果它只是一次公益活动，商业创业属性较弱；如果长期运营品牌、聚合资源、形成收费服务或外部合作，也可能具有广义创业特征。<strong>作答要求：</strong>请说明为什么不能简单用“是否注册公司”“是否盈利”判断，而要用机会识别、资源组合、价值创造、创新性和风险承担来判断。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>创业的核心是机会识别、资源组合、价值创造和不确定性承担，而不是简单的注册公司或赚钱。</li>
+                <li>格子互动更典型，因为它面向客户提供信息技术服务，存在明确市场需求、商业交易和经营风险。</li>
+                <li>创业讲坛如果只是一次校园活动，创业属性较弱；如果持续整合企业家、学生、场地、品牌和商业合作，也可以成为广义创业。</li>
+                <li>所以判断时要看活动是否创造新价值、是否有持续组织、是否承担风险，而不是看名称和形式。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>这题最容易答成“公司算，讲坛不算”。高分答案要承认创业有程度差异。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q29">
+          <div class="worked-head"><h3>题 29：《Threes!》与 2048 说明好产品为什么也可能输</h3><span class="tag blue">商业模式</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>《Threes!》是一款设计精巧的付费数字益智游戏，玩法简单、体验完整，但也正因为规则容易被理解和复制，很快出现了 1024、2048 等免费或开源同类玩法。2048 以低门槛、免费传播和网页可玩性迅速扩散，用户不一定知道原作是谁，也很少愿意为原作持续付费。课件用它说明：一个好产品如果只靠一次性购买和单一玩法，没有 IP、社区、持续内容、版权保护或网络效应，很容易在移动互联网中被低价复制品稀释价值。<strong>作答要求：</strong>请分析好产品为什么也可能输给更强传播和更低价格的替代品，并提出商业模式改进方向。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>《Threes!》的问题不是产品没有创意，而是价值获取和防复制能力不足。玩法一旦被理解，免费版本和开源版本可以迅速扩散。</li>
+                <li>2048 的传播说明，在移动互联网和开源环境中，简单玩法如果没有 IP、社区、关卡体系或持续服务，很容易被替代。</li>
+                <li>好产品需要配套商业模式：定价、分发、版权保护、用户留存、后续内容和变现方式都要设计。</li>
+                <li>启示是，创业不能只追求“做出好东西”，还要设计如何持续获取价值和抵御模仿。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把失败归因于“不够努力”。这里考的是产品价值和商业价值之间的落差。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q30">
+          <div class="worked-head"><h3>题 30：高技术壁垒硬件产品与柔宇科技应如何评价</h3><span class="tag amber">技术商业化</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件一方面强调高技术壁垒硬件产品可以形成进入门槛，另一方面把柔宇科技作为反面提醒。柔宇科技曾凭柔性屏、折叠设备和高学历团队获得资本与舆论关注，但硬科技创业不只考验实验室技术，还考验量产良率、客户导入、供应链协同、现金流和应用场景。公开报道显示，柔宇后来陷入资金困难、欠薪和破产清算，外界质疑其量产能力、获客能力和主流厂商采用情况。<strong>作答要求：</strong>请分析为什么“技术领先”不等于“商业成功”，并用集合模式说明硬件企业需要如何整合上游、下游、资本和客户。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>高技术壁垒能提高进入门槛，但不能自动证明商业模式成立。硬件产品还要看量产良率、成本、供应链、客户场景和售后能力。</li>
+                <li>柔宇科技有高学历团队和柔性屏技术亮点，但如果产品应用场景不清、现金流压力大、产业链协同不足，技术领先也难以转化为持续收入。</li>
+                <li>集合模式强调与上下游形成联盟。技术公司若不能把客户、供应商、渠道和资金整合起来，单点技术会很孤立。</li>
+                <li>因此评价硬科技案例要同时看技术成功率和商业成功率，不能把“全球首创”直接等同于创业成功。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>硬科技案例要写“技术，量产，市场，现金流，生态”五件事。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q31">
+          <div class="worked-head"><h3>题 31：荷兰鲜花拍卖市场为什么适合拍卖模式</h3><span class="tag">在线拍卖</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用荷兰鲜花拍卖市场说明荷兰拍卖机制。鲜花具有保质期短、价格波动快、品类多、产地分散和交易时效强的特点，如果买卖双方逐个讨价还价，鲜花价值会随时间快速下降。荷兰拍卖通常从较高价格开始，价格逐步下降，买家在可接受价格按下购买，适合在集中市场里快速完成价格发现。Royal FloraHolland 等鲜花交易平台还提供质量分级、物流、信息展示和远程竞买，使大量买家和花农在短时间内完成交易。<strong>作答要求：</strong>请说明商品特征如何决定交易机制，并分析拍卖模式的效率、信任和风险。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>鲜花保质期短、交易时效强，如果议价过程太慢，商品价值会快速下降，所以需要高效率价格发现机制。</li>
+                <li>荷兰拍卖通过价格逐步下降促成快速成交，适合果蔬、鲜花等不易长期保存的鲜活产品。</li>
+                <li>大型拍卖市场还提供集中检测、物流、信息展示和交易规则，降低买卖双方的信息不对称。</li>
+                <li>这种模式的核心价值不是“便宜”，而是高效率、标准化和可信交易。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>拍卖题要说明“商品特征决定机制选择”。不要只背英式、荷兰、密封、双重拍卖的名字。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q32">
+          <div class="worked-head"><h3>题 32：免费增值模式辩论与 Costco 忠诚模式如何比较</h3><span class="tag blue">客户关系</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件一边讨论免费增值模式，一边讲 Costco 忠诚模式。免费增值常见于软件、内容或互联网服务：先用免费版本降低试用门槛，积累用户和数据，再让部分高需求用户为高级功能、容量、服务或效率付费；但如果免费用户太多、转化率太低，企业会有流量却没有利润。Costco 则反过来先用会员费筛选客户，再用低毛利精选商品、稳定品质、退货信任和高周转率提高续费。<strong>作答要求：</strong>请比较两者在获客、转化、留存、客户生命周期价值和盈利来源上的差异，并说明各自的关键风险。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>免费增值模式用免费产品降低用户教育和获客成本，再从少数高价值用户身上获取付费收入。</li>
+                <li>它的风险是免费用户质量低、服务成本高、转化率不足，导致“有流量无利润”。</li>
+                <li>Costco 忠诚模式则先通过会员制筛选用户，再用低毛利精选商品、服务和信任提高复购。</li>
+                <li>两者都重视客户关系，但免费增值关注转化率，Costco 关注会员续费、客单价和信任。</li>
+                <li>考试中比较时，要写清楚“客户从哪里来，为什么留下，企业从哪里赚钱”。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把“免费”当万能获客，也不要把“会员”当简单收费。关键是长期客户价值。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q33">
+          <div class="worked-head"><h3>题 33：SnapTax、Meta Orion、咕咚网和 SpaceX 星舰迭代体现了哪些精益创业原则</h3><span class="tag amber">精益创业</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用 SnapTax、Meta Orion、咕咚网和 SpaceX 星舰说明精益创业。SnapTax 把报税中最痛的输入环节简化为用手机拍 W-2 表格，让用户先体验“拍照报税”的核心价值；Meta Orion 作为 AR 眼镜原型并未直接大规模销售，而是给员工和少量外部对象体验，以验证重量、交互、成本和使用场景；咕咚网围绕运动记录和运动社区持续迭代，先抓核心用户；SpaceX 星舰则通过连续原型和试飞，把失败变成工程数据。<strong>作答要求：</strong>请说明这些案例如何体现 MVP、天使用户、客户反馈、快速迭代和转向，为什么精益创业不是“做小项目”，而是用每轮投入换取有效学习。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>SnapTax 体现了聚焦明确痛点，用极简功能先验证用户是否愿意使用。</li>
+                <li>Meta Orion 体现前沿硬件也要通过原型体验验证交互、重量、成本和真实使用场景。</li>
+                <li>咕咚网体现围绕运动用户持续迭代，先抓住天使用户和核心需求，再扩展产品和社区。</li>
+                <li>SpaceX 星舰迭代说明宏大目标可以拆成连续原型测试，通过失败快速学习，而不是等完美计划完成再行动。</li>
+                <li>这些案例共同体现客户导向、试错、MVP、天使用户和快速迭代五项原则。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>精益创业不是一定便宜，而是每一轮投入都要换来可学习的数据。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q34">
+          <div class="worked-head"><h3>题 34：新浪/四通利方/王志东与雷士照明/吴长江说明什么控制权问题</h3><span class="tag">股权控制</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用新浪/四通利方/王志东和雷士照明/吴长江说明创始人控制权风险。新浪前身四通利方在发展中经历资本进入、股权稀释和治理结构变化，王志东最终离开，说明创始人如果缺少表决权、董事会和章程安排，股份被稀释后很难继续主导公司。雷士照明则长期围绕创始人、投资人和后续股东之间的经营权、董事会和控制权发生冲突，企业内部治理消耗巨大。<strong>作答要求：</strong>请分析融资为什么会改变控制权结构，并说明创始人应如何在融资前设计表决权、董事会席位、重大事项否决权和退出机制。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>新浪案例说明，多轮融资后创始人股权可能被大幅稀释，如果没有表决权和董事会安排，容易失去公司控制。</li>
+                <li>雷士照明案例说明，创始人、投资人和后续股东之间如果治理边界不清，会围绕经营权和控制权长期冲突。</li>
+                <li>控制权不仅是股份比例，还包括表决权、董事席位、章程、重大事项否决权和股东协议。</li>
+                <li>创业者融资时应提前设计控制权保护，同时也要接受规范治理，不能把公司当个人资产。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>这类题不要只写“资本无情”。更准确是创始人没有设计好融资后的治理结构。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q35">
+          <div class="worked-head"><h3>题 35：可口可乐创意包装、魔方蛋糕/Cedric Grolet 和艾睿电子/Sam Schmidt如何体现创意开发</h3><span class="tag blue">创意方法</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用三个案例讲创意开发。可口可乐创意包装说明成熟饮料也能通过姓名瓶、节日包装、联名或互动设计制造新的消费理由和社交传播；魔方蛋糕/Cedric Grolet 把甜点、几何造型、视觉艺术和社交媒体展示结合起来，让产品不仅是食物，也是可传播的体验；艾睿电子与赛车手 Sam Schmidt 的 SAM Car 则从残障赛车手重返驾驶的真实需求出发，用头部动作、语音、呼吸控制和半自动驾驶技术改造赛车。<strong>作答要求：</strong>请分别用头脑风暴、跨界组合和设计思维解释这些创意从哪里来、解决什么问题、如何转化为商业或社会价值。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>可口可乐创意包装说明成熟产品也可以通过包装、节日、互动和联名制造新消费理由，这是创意对传统产品的再开发。</li>
+                <li>魔方蛋糕/Cedric Grolet 体现跨界思维，把甜点、视觉艺术、游戏感和社交传播结合，提升情绪价值和差异化。</li>
+                <li>艾睿电子/Sam Schmidt 体现设计思维，从残障赛车手真实需求出发，用同理心定义问题、制作原型并测试产品。</li>
+                <li>三者共同说明：创意不是天马行空，而是围绕用户需求，把不同产品、技术、场景和体验重新组合。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>创意开发题不要只写“有创意”。要指出用了什么方法，解决了什么需求。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q36">
+          <div class="worked-head"><h3>题 36：Gatorade 与昂跑运动鞋分别属于什么机会</h3><span class="tag amber">问题型机会</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把 Gatorade 和昂跑运动鞋放在问题型机会中。Gatorade 诞生于运动员训练和比赛中的脱水、电解质流失与能量补充问题，最初由佛罗里达大学研究人员为运动员补充汗液流失和碳水能量而开发，后来变成功能饮料品牌。昂跑运动鞋则从跑者落地冲击、缓震、回弹和轻量体验出发，用 CloudTec 等技术把“跑在云上”的感受变成产品卖点。<strong>作答要求：</strong>请分析二者如何把具体痛点转化为产品、品牌和市场机会，并说明问题型机会必须满足什么条件才可创业。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>Gatorade 的机会来自运动补水和电解质补充问题。它不是普通饮料，而是围绕运动场景的功能性解决方案。</li>
+                <li>昂跑运动鞋的机会来自跑步冲击、支撑和舒适性问题，通过材料、结构和 LightSpray 等技术改进体验。</li>
+                <li>问题型机会的关键是痛点清晰、使用场景高频、用户愿意付费，并且解决方案能被验证。</li>
+                <li>创业者应避免只看到“我有产品”，而要说清楚“我解决了谁在什么场景下的什么问题”。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>问题型机会不是抱怨，而是可被产品化、商业化解决的具体痛点。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q37">
+          <div class="worked-head"><h3>题 37：空空狐余小丹与周亚辉、育碧与 Vivendi、京东刘强东控制权如何共同说明融资不是只拿钱</h3><span class="tag">融资控制权</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件把空空狐、育碧和京东放在同一类控制权题中。空空狐余小丹与周亚辉的争议发生在早期融资和公司治理阶段，问题集中在资金使用、董事会、创始人职责和股权变化；育碧与 Vivendi 的冲突发生在上市公司层面，Vivendi 持续买入股份引发创始家族对恶意收购和战略独立性的担忧；京东刘强东则通过差异化投票权等安排，在多轮融资和上市后保持战略主导。<strong>作答要求：</strong>请说明融资为什么既带来资源也带来控制权风险，并比较早期创业、成熟上市公司和双重股权结构下的保护方式。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>空空狐案例说明，创业者和投资人如果在资金使用、经营责任和决策权上没有清晰契约，冲突会迅速升级。</li>
+                <li>育碧与 Vivendi 说明，公司成熟后仍可能遭遇外部资本控制权争夺，创始团队需要反收购意识和盟友资源。</li>
+                <li>京东刘强东控制权说明，股权比例不等于控制权，差异化投票权和表决权设计能在融资稀释后维持战略主导。</li>
+                <li>融资的本质是用部分权益换资源，创业者必须同时管理钱、条款、投资人关系、董事会和长期控制权。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>融资题不要只答“选择有资源的投资人”。必须写清条款和治理结构。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q38">
+          <div class="worked-head"><h3>题 38：波士顿动力 vs 特斯拉机器人与影石 Insta360说明新企业如何突围</h3><span class="tag blue">新企业生成</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用波士顿动力、特斯拉机器人和影石 Insta360 说明新企业突围。波士顿动力长期以 Atlas 等机器人展示极强运动能力，近年也转向全电 Atlas 和商业应用；特斯拉 Optimus 的优势不在单个动作演示，而在 AI、制造规模和潜在应用场景。影石 Insta360 则没有与传统相机巨头正面比拼单反画质，而是用 360 度拍摄、隐形自拍杆、后期重新构图、AI 剪辑和运动场景切入，让普通用户更容易拍出新视角内容。<strong>作答要求：</strong>请分析新企业面对巨头时如何选择差异化突破口，并区分技术展示能力、产品体验能力和商业化能力。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>波士顿动力技术动作惊艳，但液压方案成本高、维护难，说明技术展示不等于商业化。特斯拉强调规模化和电驱路线，商业目标更明确。</li>
+                <li>影石 Insta360 则通过全景拍摄、AI 剪辑、隐形自拍杆和运动场景形成差异化，避开传统相机巨头主战场。</li>
+                <li>新企业突围要找到突破口：极致性价比、差异化功能、细分场景、快速迭代和清晰用户群。</li>
+                <li>不要过早引起巨头注意，也不要复制巨头打法。小公司要先在局部场景形成强价值，再逐步扩大。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>技术型案例要区分“演示能力”和“商业化能力”。</p></div>
+          </div>
+        </article>
+
+        <article class="worked" id="q39">
+          <div class="worked-head"><h3>题 39：复星成长阶段与李锦记与荣甡蚝油庄对比说明什么</h3><span class="tag amber">企业成长</span></div>
+          <div class="worked-body">
+            <p class="scene-brief"><strong>案例材料：</strong>课件用复星成长阶段和李锦记与荣甡蚝油庄对比，讨论企业成长中的“扩张”和“坚守”。复星从早期创业到内生增长、并购扩张、资本市场扩张，再到后续瘦身调整，说明企业成长不是一直加速，而是不同阶段要匹配不同战略和风险承受能力。李锦记与荣甡都与蚝油传统有关，但李锦记把传统产品通过品牌、标准化生产、自动化、渠道和国际化放大，荣甡更像坚守传统工艺的老字号。<strong>作答要求：</strong>请分析企业什么时候应坚守核心能力，什么时候应扩张边界，以及扩张失败可能来自哪些资源、管理和现金流问题。</p>
+            <div class="solution">
+              <h4>参考答案</h4>
+              <ol class="answer-list">
+                <li>复星成长阶段显示，企业会经历创立、内生增长、并购扩张、上市扩张和调整瘦身，不同阶段的核心任务不同。</li>
+                <li>李锦记与荣甡蚝油庄对比说明，坚守传统工艺有价值，但如果缺乏规模化、现代管理和市场开发，可能错过成长机会。</li>
+                <li>李锦记通过自动化、多品种、多元化和国际化，把传统产品转化为现代企业；荣甡则更像手工老店，传承能力不足。</li>
+                <li>因此企业成长不是盲目扩张，也不是固守不变，而是在核心能力基础上选择合适的专业化、多元化和国际化路径。</li>
+              </ol>
+            </div>
+            <div class="mistakes"><h4>注意点</h4><p>不要把“传统”简单等同于落后。关键是传统优势能否被现代组织和市场机制放大。</p></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="final-check">
+        <h2>6. 考前注意点</h2>
+        <div class="grid two">
+          <div class="card">
+            <h3>答题必带的 8 个词</h3>
+            <p>机会识别、资源组合、价值创造、商业模式、MVP、团队治理、控制权、持续成长。</p>
+          </div>
+          <div class="card">
+            <h3>最容易漏的角度</h3>
+            <p>现金流、单位经济模型、退出机制、投资条款、合法性、时机窗口、能力边界、传承制度。</p>
+          </div>
+          <div class="card">
+            <h3>不要这样写</h3>
+            <ul class="compact-list">
+              <li>只复述案例，没有理论框架。</li>
+              <li>只背概念，不结合题目事实。</li>
+              <li>只写成功或失败一个原因。</li>
+              <li>把融资等同于越多越好。</li>
+              <li>把股权平均分当成公平。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>推荐收尾句</h3>
+            <p>“综上，本案例的关键在于让机会、商业模式、团队能力和资本安排相互匹配。创业者应先验证核心假设，再扩张规模，并通过契约和治理机制降低后续风险。”</p>
+          </div>
+        </div>
+        <div class="exam-note">
+          <div class="mark">背</div>
+          <div><strong>最后一遍复习：</strong>每个案例都按“它解决什么痛点，怎么赚钱，为什么现在做，团队能不能做，钱和控制权怎么安排，下一步怎么改”六句话过一遍。</div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
